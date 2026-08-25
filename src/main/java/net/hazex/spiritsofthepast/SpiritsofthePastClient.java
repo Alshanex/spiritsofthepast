@@ -1,12 +1,16 @@
 package net.hazex.spiritsofthepast;
 
+import net.hazex.spiritsofthepast.entities.SandShardRenderer;
+import net.hazex.spiritsofthepast.registries.EntityRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -25,5 +29,11 @@ public class SpiritsofthePastClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
 
+    }
+
+    @SubscribeEvent
+    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(EntityRegistry.SAND_SHARD.get(), SandShardRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.SANDFALL_EMITTER.get(), NoopRenderer::new);
     }
 }

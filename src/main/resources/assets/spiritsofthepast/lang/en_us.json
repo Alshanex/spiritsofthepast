@@ -1,13 +1,5 @@
 {
-  "itemGroup.spiritsofthepast": "Example Mod Tab",
-  "block.spiritsofthepast.example_block": "Example Block",
-  "item.spiritsofthepast.example_item": "Example Item",
-
-  "spiritsofthepast.configuration.title": "Spirits of the Past Configs",
-  "spiritsofthepast.configuration.section.spiritsofthepast.common.toml": "Spirits of the Past Configs",
-  "spiritsofthepast.configuration.section.spiritsofthepast.common.toml.title": "Spirits of the Past Configs",
-  "spiritsofthepast.configuration.items": "Item List",
-  "spiritsofthepast.configuration.logDirtBlock": "Log Dirt Block",
-  "spiritsofthepast.configuration.magicNumberIntroduction": "Magic Number Text",
-  "spiritsofthepast.configuration.magicNumber": "Magic Number"
+  "item.spiritsofthepast.sandfall_staff": "Sandfall Staff",
+  "entity.spiritsofthepast.sand_shard": "Sand Shard",
+  "entity.spiritsofthepast.sandfall_emitter": "Sandfall"
 }
