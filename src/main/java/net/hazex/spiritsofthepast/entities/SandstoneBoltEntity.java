@@ -120,7 +120,8 @@ public class SandstoneBoltEntity extends Projectile {
                 target -> target.isAlive()
                         && target.isPickable()
                         && !target.isSpectator()
-                        && target != owner);
+                        && target != owner
+                        && !isFriendly(target));
         if (entityHit != null) {
             stop = entityHit.getLocation();
             impacted = true;
@@ -144,6 +145,11 @@ public class SandstoneBoltEntity extends Projectile {
             this.setPos(stop.x, stop.y, stop.z);
             this.setDeltaMovement(Vec3.ZERO);
         }
+    }
+
+    private boolean isFriendly(Entity target) {
+        Entity owner = getOwner();
+        return owner != null && (target == owner || owner.isAlliedTo(target));
     }
 
     private void hurtTarget(EntityHitResult entityHit) {

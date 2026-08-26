@@ -3,6 +3,7 @@ package net.hazex.spiritsofthepast.registries;
 import net.hazex.spiritsofthepast.SpiritsofthePast;
 import net.hazex.spiritsofthepast.items.AnkhStaffItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;

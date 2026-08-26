@@ -13,17 +13,14 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
@@ -37,6 +34,7 @@ public class SandShardEntity extends Projectile {
     private static final double GRAVITY = 0.045;
     private static final double DRAG = 0.98;
     private static final float IMPACT_DAMAGE = 2.0F;
+    private static final int COLLISION_STEPS = 4;
 
     private int life;
 
@@ -52,6 +50,11 @@ public class SandShardEntity extends Projectile {
         this(EntityRegistry.SAND_SHARD.get(), level);
         this.setPos(x, y, z);
         this.setBlockState(state);
+    }
+
+    private boolean isFriendly(Entity target) {
+        Entity owner = getOwner();
+        return owner != null && (target == owner || owner.isAlliedTo(target));
     }
 
     public void setBlockState(BlockState state) {
@@ -77,44 +80,63 @@ public class SandShardEntity extends Projectile {
 
         Vec3 motion = this.getDeltaMovement().add(0.0, -GRAVITY, 0.0).scale(DRAG);
         Vec3 from = this.position();
-        Vec3 to = from.add(motion);
 
-        Vec3 stop = to;
+        Vec3 stop = from.add(motion);
         boolean impacted = false;
         EntityHitResult entityHit = null;
 
-        if (to.y <= this.collisionStartY) {
-            Vec3 rayFrom = from;
-            if (from.y > this.collisionStartY) {
-                double crossing = (from.y - this.collisionStartY) / (from.y - to.y);
-                rayFrom = from.add(to.subtract(from).scale(crossing));
-            }
-
-            BlockHitResult blockHit = this.level().clip(new ClipContext(
-                    rayFrom, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-            if (blockHit.getType() != HitResult.Type.MISS) {
-                stop = blockHit.getLocation();
+        if (stop.y <= this.collisionStartY) {
+            double clear = freeFraction(motion);
+            if (clear < 1.0) {
+                stop = from.add(motion.scale(clear));
                 impacted = true;
             }
         }
 
-        entityHit = ProjectileUtil.getEntityHitResult(
-                this.level(), this, from, stop,
-                this.getBoundingBox().expandTowards(motion).inflate(0.25),
-                target -> target.isAlive() && target.isPickable() && !target.isSpectator());
-        if (entityHit != null) {
-            stop = entityHit.getLocation();
+        Entity struck = findStruckEntity(motion);
+        if (struck != null) {
+            entityHit = new EntityHitResult(struck);
             impacted = true;
         }
 
         this.setPos(stop.x, stop.y, stop.z);
         this.setDeltaMovement(impacted ? Vec3.ZERO : motion);
 
-        if (impacted) {
-            if (this.level() instanceof ServerLevel server) {
-                onImpact(server, entityHit);
+        if (impacted && this.level() instanceof ServerLevel server) {
+            onImpact(server, entityHit);
+        }
+    }
+
+    private double freeFraction(Vec3 motion) {
+        AABB box = this.getBoundingBox();
+        for (int step = COLLISION_STEPS; step >= 1; step--) {
+            double fraction = (double) step / COLLISION_STEPS;
+            if (this.level().noCollision(this, box.move(motion.scale(fraction)))) {
+                return fraction;
             }
         }
+        return 0.0;
+    }
+
+    @Nullable
+    private Entity findStruckEntity(Vec3 motion) {
+        AABB sweep = this.getBoundingBox().expandTowards(motion).inflate(0.05);
+
+        Entity nearest = null;
+        double nearestDist = Double.MAX_VALUE;
+
+        for (Entity candidate : this.level().getEntities(this, sweep,
+                target -> target.isAlive()
+                        && target.isPickable()
+                        && !target.isSpectator()
+                        && !isFriendly(target))) {
+            double dist = candidate.distanceToSqr(this);
+            if (dist < nearestDist) {
+                nearestDist = dist;
+                nearest = candidate;
+            }
+        }
+        return nearest;
     }
 
     private void onImpact(ServerLevel level, @Nullable EntityHitResult entityHit) {

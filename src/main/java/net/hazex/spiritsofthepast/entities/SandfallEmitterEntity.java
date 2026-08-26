@@ -102,6 +102,7 @@ public class SandfallEmitterEntity extends Entity {
                 -0.1,
                 (this.random.nextDouble() - 0.5) * 0.04
         );
+        shard.setOwner(getOwner());
         this.level().addFreshEntity(shard);
     }
 

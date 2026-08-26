@@ -1,7 +1,9 @@
 package net.hazex.spiritsofthepast;
 
+import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
 import net.hazex.spiritsofthepast.registries.EntityRegistry;
 import net.hazex.spiritsofthepast.registries.ItemRegistry;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -59,6 +61,8 @@ public class SpiritsofthePast {
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
+        modEventBus.addListener(this::registerAttributes);
+
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -72,6 +76,10 @@ public class SpiritsofthePast {
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ItemRegistry.ANKH_STAFF);
         }
+    }
+
+    private void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(EntityRegistry.PHARAOH.get(), PharaohEntity.createAttributes().build());
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

@@ -2,6 +2,7 @@ package net.hazex.spiritsofthepast;
 
 import net.hazex.spiritsofthepast.entities.SandShardRenderer;
 import net.hazex.spiritsofthepast.entities.SandstoneBoltRenderer;
+import net.hazex.spiritsofthepast.entities.pharaoh.PharaohRenderer;
 import net.hazex.spiritsofthepast.registries.EntityRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -37,6 +38,8 @@ public class SpiritsofthePastClient {
         event.registerEntityRenderer(EntityRegistry.SAND_SHARD.get(), SandShardRenderer::new);
         event.registerEntityRenderer(EntityRegistry.SANDFALL_EMITTER.get(), NoopRenderer::new);
         event.registerEntityRenderer(EntityRegistry.SANDSTONE_BOLT.get(), SandstoneBoltRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.PHARAOH.get(),
+                context -> new PharaohRenderer<>(context, EntityRegistry.PHARAOH.get()));
     }
 
     @SubscribeEvent

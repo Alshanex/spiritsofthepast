@@ -4,6 +4,7 @@ import net.hazex.spiritsofthepast.SpiritsofthePast;
 import net.hazex.spiritsofthepast.entities.SandShardEntity;
 import net.hazex.spiritsofthepast.entities.SandfallEmitterEntity;
 import net.hazex.spiritsofthepast.entities.SandstoneBoltEntity;
+import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
@@ -52,6 +53,16 @@ public class EntityRegistry {
                             .fireImmune()
                             .clientTrackingRange(4)
                             .updateInterval(1)
+            );
+
+    public static final Supplier<EntityType<PharaohEntity>> PHARAOH =
+            ENTITY_TYPES.registerEntityType(
+                    "pharaoh",
+                    PharaohEntity::new,
+                    MobCategory.MONSTER,
+                    builder -> builder
+                            .sized(0.9f, 2.9f)
+                            .clientTrackingRange(16)
             );
 
     public static void register(IEventBus modEventBus){
