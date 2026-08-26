@@ -5,6 +5,9 @@
     64,
     64
   ],
+  "textures": {
+    "particle": "spiritsofthepast:item/ankh_staff"
+  },
   "display": {
     "firstperson_righthand": {
       "translation": [

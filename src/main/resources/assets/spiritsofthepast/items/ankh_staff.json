@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "spiritsofthepast:item/ankh_staff",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  }
+}

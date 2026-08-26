@@ -24,8 +24,11 @@ public class SandfallEmitterEntity extends Entity {
     private static final int SHARDS_PER_TICK = 2;
 
     private int ticksLeft = DURATION;
+
     @Nullable
     private UUID ownerUuid;
+    @Nullable
+    private Entity cachedOwner;
 
     public SandfallEmitterEntity(EntityType<? extends SandfallEmitterEntity> type, Level level) {
         super(type, level);
@@ -40,14 +43,19 @@ public class SandfallEmitterEntity extends Entity {
 
     public void setOwner(@Nullable Entity owner) {
         this.ownerUuid = owner == null ? null : owner.getUUID();
+        this.cachedOwner = owner;
     }
 
     @Nullable
     public Entity getOwner() {
-        if (this.ownerUuid != null && this.level() instanceof ServerLevel server) {
-            return server.getEntity(this.ownerUuid);
+        if (this.cachedOwner != null && this.cachedOwner.isAlive()) {
+            return this.cachedOwner;
         }
-        return null;
+        this.cachedOwner = null;
+        if (this.ownerUuid != null && this.level() instanceof ServerLevel server) {
+            this.cachedOwner = server.getEntity(this.ownerUuid);
+        }
+        return this.cachedOwner;
     }
 
     @Override
@@ -61,6 +69,11 @@ public class SandfallEmitterEntity extends Entity {
         if (this.ticksLeft-- <= 0) {
             this.discard();
             return;
+        }
+
+        Entity owner = this.getOwner();
+        if (owner != null && owner.level() == this.level()) {
+            this.setPos(owner.getX(), owner.getY(), owner.getZ());
         }
 
         for (int i = 0; i < SHARDS_PER_TICK; i++) {
@@ -100,11 +113,17 @@ public class SandfallEmitterEntity extends Entity {
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
         this.ticksLeft = input.getIntOr("TicksLeft", DURATION);
+        String uuid = input.getStringOr("Owner", "");
+        this.ownerUuid = uuid.isEmpty() ? null : UUID.fromString(uuid);
+        this.cachedOwner = null;
     }
 
     @Override
     protected void addAdditionalSaveData(ValueOutput output) {
         output.putInt("TicksLeft", this.ticksLeft);
+        if (this.ownerUuid != null) {
+            output.putString("Owner", this.ownerUuid.toString());
+        }
     }
 
     @Override
