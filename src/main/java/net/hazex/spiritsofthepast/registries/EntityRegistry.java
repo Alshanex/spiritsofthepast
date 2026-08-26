@@ -3,6 +3,7 @@ package net.hazex.spiritsofthepast.registries;
 import net.hazex.spiritsofthepast.SpiritsofthePast;
 import net.hazex.spiritsofthepast.entities.SandShardEntity;
 import net.hazex.spiritsofthepast.entities.SandfallEmitterEntity;
+import net.hazex.spiritsofthepast.entities.SandstoneBoltEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
@@ -37,6 +38,20 @@ public class EntityRegistry {
                             .fireImmune()
                             .clientTrackingRange(10)
                             .updateInterval(20)
+            );
+
+    public static final Supplier<EntityType<SandstoneBoltEntity>> SANDSTONE_BOLT =
+            ENTITY_TYPES.registerEntityType(
+                    "sandstone_bolt",
+                    SandstoneBoltEntity::new,
+                    MobCategory.MISC,
+                    builder -> builder
+                            .sized(0.3f, 0.3f)
+                            .noSummon()
+                            .noSave()
+                            .fireImmune()
+                            .clientTrackingRange(4)
+                            .updateInterval(1)
             );
 
     public static void register(IEventBus modEventBus){
