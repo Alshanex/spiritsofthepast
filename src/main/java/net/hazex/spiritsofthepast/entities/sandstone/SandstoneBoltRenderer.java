@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.entities;
+package net.hazex.spiritsofthepast.entities.sandstone;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

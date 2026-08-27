@@ -1,15 +1,11 @@
-package net.hazex.spiritsofthepast.entities;
+package net.hazex.spiritsofthepast.entities.javelin;
 
-import net.hazex.spiritsofthepast.registries.SotPEffectRegistry;
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
-import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,7 +13,6 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.BlockHitResult;
@@ -26,57 +21,40 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
-import java.util.UUID;
 
-public class SandstoneBoltEntity extends Projectile {
+public class FossilizedJavelinEntity extends Projectile {
 
-    public static final double SPEED = 1.4;
+    public static final double SPEED = 1.6;
 
-    private static final double GRAVITY = 0.0;
-    private static final double DRAG = 1.0;
-    private static final int MAX_LIFETIME = 60;
-    private static final float DAMAGE = 5.0F;
+    private static final double GRAVITY = 0.05;
+    private static final double DRAG = 0.99;
+    private static final int MAX_LIFETIME = 200;
+    private static final float DAMAGE = 8.0F;
+
+    private static final int STUCK_DURATION = 50;
+
+    private static final double EMBED_OFFSET = 0.9;
 
     private int life;
-    @Nullable
-    private UUID ownerUuid;
-    @Nullable
-    private Entity cachedOwner;
+    private boolean stuck;
+    private int stuckTicks;
 
-    public SandstoneBoltEntity(EntityType<? extends SandstoneBoltEntity> type, Level level) {
+    public FossilizedJavelinEntity(EntityType<? extends FossilizedJavelinEntity> type, Level level) {
         super(type, level);
         this.noPhysics = true;
         this.blocksBuilding = false;
     }
 
-    public SandstoneBoltEntity(Level level, @Nullable LivingEntity owner, double x, double y, double z) {
-        this(SotPEntityRegistry.SANDSTONE_BOLT.get(), level);
+    public FossilizedJavelinEntity(Level level, @Nullable LivingEntity owner, double x, double y, double z) {
+        this(SotPEntityRegistry.FOSSILIZED_JAVELIN.get(), level);
         this.setPos(x, y, z);
         this.setOwner(owner);
     }
 
-    public void setOwner(@Nullable Entity owner) {
-        this.ownerUuid = owner == null ? null : owner.getUUID();
-        this.cachedOwner = owner;
-    }
-
-    @Nullable
-    public Entity getOwner() {
-        if (this.cachedOwner != null && this.cachedOwner.isAlive()) {
-            return this.cachedOwner;
-        }
-        this.cachedOwner = null;
-        if (this.ownerUuid != null && this.level() instanceof ServerLevel server) {
-            this.cachedOwner = server.getEntity(this.ownerUuid);
-        }
-        return this.cachedOwner;
-    }
-
-    public void shoot(Vec3 direction) {
-        Vec3 motion = direction.normalize().scale(SPEED);
+    public void shoot(Vec3 direction, double speed) {
+        Vec3 motion = direction.normalize().scale(speed);
         this.setDeltaMovement(motion);
-        this.faceMotion(motion);
-
+        faceMotion(motion);
         this.yRotO = this.getYRot();
         this.xRotO = this.getXRot();
     }
@@ -87,14 +65,21 @@ public class SandstoneBoltEntity extends Projectile {
         this.setXRot((float) (Math.atan2(motion.y, horizontal) * (180.0 / Math.PI)));
     }
 
-    @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-
+    private boolean isFriendly(Entity target) {
+        Entity owner = getOwner();
+        return owner != null && (target == owner || owner.isAlliedTo(target));
     }
 
     @Override
     public void tick() {
         super.tick();
+
+        if (this.stuck) {
+            if (++this.stuckTicks >= STUCK_DURATION && !this.level().isClientSide()) {
+                this.discard();
+            }
+            return;
+        }
 
         if (++this.life > MAX_LIFETIME) {
             this.discard();
@@ -115,14 +100,12 @@ public class SandstoneBoltEntity extends Projectile {
             impacted = true;
         }
 
-        Entity owner = this.getOwner();
         EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(
                 this.level(), this, from, stop,
                 this.getBoundingBox().expandTowards(motion).inflate(0.3),
                 target -> target.isAlive()
                         && target.isPickable()
                         && !target.isSpectator()
-                        && target != owner
                         && !isFriendly(target));
         if (entityHit != null) {
             stop = entityHit.getLocation();
@@ -132,45 +115,44 @@ public class SandstoneBoltEntity extends Projectile {
         if (!impacted) {
             this.setPos(stop.x, stop.y, stop.z);
             this.setDeltaMovement(motion);
+            faceMotion(motion);
             return;
         }
 
         if (this.level() instanceof ServerLevel server) {
             if (entityHit != null) {
-                hurtTarget(entityHit);
+                entityHit.getEntity().hurtServer(server,
+                        this.damageSources().thrown(this, this.getOwner()), DAMAGE);
             }
-            this.setPos(stop.x, stop.y, stop.z);
-            this.setDeltaMovement(Vec3.ZERO);
-            shatter(server);
-            this.discard();
-        } else {
-            this.setPos(stop.x, stop.y, stop.z);
-            this.setDeltaMovement(Vec3.ZERO);
+            impactEffects(server);
         }
-    }
 
-    private boolean isFriendly(Entity target) {
-        Entity owner = getOwner();
-        return owner != null && (target == owner || owner.isAlliedTo(target));
-    }
+        this.setDeltaMovement(Vec3.ZERO);
+        this.stuck = true;
+        this.stuckTicks = 0;
 
-    private void hurtTarget(EntityHitResult entityHit) {
-        DamageSource source = this.damageSources().thrown(this, this.getOwner());
-        entityHit.getEntity().hurt(source, DAMAGE);
-        if(entityHit.getEntity() instanceof LivingEntity livingEntity){
-            livingEntity.addEffect(new MobEffectInstance(SotPEffectRegistry.PUNCTURED, 200, 0));
+        if (entityHit != null) {
+            this.setPos(stop.x, stop.y, stop.z);
+            if (this.level() instanceof ServerLevel) {
+                this.discard();
+            }
+            return;
         }
+
+        Vec3 resting = stop.subtract(motion.normalize().scale(EMBED_OFFSET));
+        this.setPos(resting.x, resting.y, resting.z);
     }
 
-    private void shatter(ServerLevel level) {
-        level.sendParticles(
-                new BlockParticleOption(ParticleTypes.BLOCK, Blocks.SANDSTONE.defaultBlockState()),
-                this.getX(), this.getY(), this.getZ(),
-                12, 0.15, 0.15, 0.15, 0.05);
-
+    private void impactEffects(ServerLevel level) {
+        level.sendParticles(ParticleTypes.CRIT,
+                this.getX(), this.getY(), this.getZ(), 10, 0.2, 0.2, 0.2, 0.1);
         level.playSound(null, this.getX(), this.getY(), this.getZ(),
-                SoundEvents.SAND_BREAK, SoundSource.PLAYERS,
-                0.6F, 1.2F + this.random.nextFloat() * 0.3F);
+                SoundEvents.TRIDENT_HIT_GROUND, SoundSource.PLAYERS,
+                0.8F, 1.1F + this.random.nextFloat() * 0.3F);
+    }
+
+    @Override
+    protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
     }
 
     @Override

@@ -1,7 +1,8 @@
 package net.hazex.spiritsofthepast;
 
-import net.hazex.spiritsofthepast.entities.SandShardRenderer;
-import net.hazex.spiritsofthepast.entities.SandstoneBoltRenderer;
+import net.hazex.spiritsofthepast.entities.javelin.FossilizedJavelinRenderer;
+import net.hazex.spiritsofthepast.entities.sandstone.SandShardRenderer;
+import net.hazex.spiritsofthepast.entities.sandstone.SandstoneBoltRenderer;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohRenderer;
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -39,10 +40,13 @@ public class SpiritsofthePastClient {
         event.registerEntityRenderer(SotPEntityRegistry.SANDSTONE_BOLT.get(), SandstoneBoltRenderer::new);
         event.registerEntityRenderer(SotPEntityRegistry.PHARAOH.get(),
                 context -> new PharaohRenderer<>(context, SotPEntityRegistry.PHARAOH.get()));
+
+        event.registerEntityRenderer(SotPEntityRegistry.FOSSILIZED_JAVELIN.get(), FossilizedJavelinRenderer::new);
     }
 
     @SubscribeEvent
     private static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(SandstoneBoltRenderer.LAYER, SandstoneBoltRenderer::createLayer);
+        event.registerLayerDefinition(FossilizedJavelinRenderer.LAYER, FossilizedJavelinRenderer::createLayer);
     }
 }

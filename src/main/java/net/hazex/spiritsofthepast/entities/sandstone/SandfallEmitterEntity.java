@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.entities;
+package net.hazex.spiritsofthepast.entities.sandstone;
 
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.core.BlockPos;

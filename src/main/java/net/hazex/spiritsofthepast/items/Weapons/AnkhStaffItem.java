@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.items;
+package net.hazex.spiritsofthepast.items.Weapons;
 
 import com.geckolib.animatable.GeoItem;
 import com.geckolib.animatable.client.GeoRenderProvider;
@@ -7,8 +7,8 @@ import com.geckolib.animatable.manager.AnimatableManager;
 import com.geckolib.renderer.GeoItemRenderer;
 import com.geckolib.util.GeckoLibUtil;
 import com.google.common.base.Suppliers;
-import net.hazex.spiritsofthepast.entities.SandfallEmitterEntity;
-import net.hazex.spiritsofthepast.entities.SandstoneBoltEntity;
+import net.hazex.spiritsofthepast.entities.sandstone.SandfallEmitterEntity;
+import net.hazex.spiritsofthepast.entities.sandstone.SandstoneBoltEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;

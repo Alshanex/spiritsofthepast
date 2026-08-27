@@ -1,9 +1,10 @@
 package net.hazex.spiritsofthepast.registries;
 
 import net.hazex.spiritsofthepast.SpiritsofthePast;
-import net.hazex.spiritsofthepast.items.AnkhStaffItem;
+import net.hazex.spiritsofthepast.items.Weapons.AnkhStaffItem;
 import net.hazex.spiritsofthepast.items.Utils.SotPArmorMaterials;
 import net.hazex.spiritsofthepast.items.Utils.SotPToolTiers;
+import net.hazex.spiritsofthepast.items.Weapons.FossilizedJavelinItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
@@ -51,6 +52,11 @@ public class SotPItemRegistry {
             properties -> new Item(properties.sword(SotPToolTiers.FOSSIL,
                     8,
                     1.6f)
+            ));
+
+    public static final DeferredItem<Item> FOSSILIZED_JAVELIN = ITEMS.registerItem("fossilized_javelin",
+            properties -> new FossilizedJavelinItem(properties.spear(SotPToolTiers.FOSSIL,
+                    0.95f, 0.7f, 0.7f, 3.5f, 13f, 8.5f, 5.1f, 13.37f, 4.67f)
             ));
 
     /*

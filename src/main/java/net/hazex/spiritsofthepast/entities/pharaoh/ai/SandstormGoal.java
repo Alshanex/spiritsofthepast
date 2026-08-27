@@ -1,6 +1,6 @@
 package net.hazex.spiritsofthepast.entities.pharaoh.ai;
 
-import net.hazex.spiritsofthepast.entities.SandfallEmitterEntity;
+import net.hazex.spiritsofthepast.entities.sandstone.SandfallEmitterEntity;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

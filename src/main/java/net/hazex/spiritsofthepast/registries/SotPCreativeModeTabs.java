@@ -26,6 +26,7 @@ public class SotPCreativeModeTabs {
                         output.accept(SotPItemRegistry.AMBER_SPEAR);
                         output.accept(SotPItemRegistry.ANKH_STAFF);
                         output.accept(SotPItemRegistry.KHOPESH);
+                        output.accept(SotPItemRegistry.FOSSILIZED_JAVELIN);
 
                         // Armor
                         output.accept(SotPItemRegistry.FOSSIL_HELMET);

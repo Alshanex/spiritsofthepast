@@ -1,9 +1,10 @@
 package net.hazex.spiritsofthepast.registries;
 
 import net.hazex.spiritsofthepast.SpiritsofthePast;
-import net.hazex.spiritsofthepast.entities.SandShardEntity;
-import net.hazex.spiritsofthepast.entities.SandfallEmitterEntity;
-import net.hazex.spiritsofthepast.entities.SandstoneBoltEntity;
+import net.hazex.spiritsofthepast.entities.javelin.FossilizedJavelinEntity;
+import net.hazex.spiritsofthepast.entities.sandstone.SandShardEntity;
+import net.hazex.spiritsofthepast.entities.sandstone.SandfallEmitterEntity;
+import net.hazex.spiritsofthepast.entities.sandstone.SandstoneBoltEntity;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -63,6 +64,19 @@ public class SotPEntityRegistry {
                     builder -> builder
                             .sized(0.9f, 2.9f)
                             .clientTrackingRange(16)
+            );
+
+    public static final Supplier<EntityType<FossilizedJavelinEntity>> FOSSILIZED_JAVELIN =
+            ENTITY_TYPES.registerEntityType(
+                    "fossilized_javelin",
+                    FossilizedJavelinEntity::new,
+                    MobCategory.MISC,
+                    builder -> builder
+                            .sized(0.5f, 0.5f)
+                            .noSummon()
+                            .noSave()
+                            .clientTrackingRange(4)
+                            .updateInterval(1)
             );
 
     public static void register(IEventBus modEventBus){

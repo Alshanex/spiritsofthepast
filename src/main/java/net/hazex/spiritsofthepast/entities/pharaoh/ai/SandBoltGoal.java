@@ -1,6 +1,6 @@
 package net.hazex.spiritsofthepast.entities.pharaoh.ai;
 
-import net.hazex.spiritsofthepast.entities.SandstoneBoltEntity;
+import net.hazex.spiritsofthepast.entities.sandstone.SandstoneBoltEntity;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
