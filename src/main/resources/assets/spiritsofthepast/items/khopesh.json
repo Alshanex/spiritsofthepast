@@ -20,5 +20,6 @@
       "model": "spiritsofthepast:item/khopesh_in_hand"
     },
     "property": "minecraft:display_context"
-  }
+  },
+  "swap_animation_scale": 1
 }

@@ -104,7 +104,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         super(type, level);
         this.setPersistenceRequired();
 
-        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 200;
+        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 260;
         this.abilityCooldowns[Ability.STORM.ordinal()] = 140;
         this.abilityCooldowns[Ability.BOLT.ordinal()] = 40;
     }
@@ -276,6 +276,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
     public void applyAxeHusk(Mob husk) {
         husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.COPPER_AXE));
+        husk.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.IRON_CHESTPLATE));
     }
 
     public void applyParchedBow(Mob parched) {
