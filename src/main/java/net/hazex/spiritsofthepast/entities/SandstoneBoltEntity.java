@@ -1,5 +1,6 @@
 package net.hazex.spiritsofthepast.entities;
 
+import net.hazex.spiritsofthepast.registries.SotPEffectRegistry;
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -8,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -155,6 +157,9 @@ public class SandstoneBoltEntity extends Projectile {
     private void hurtTarget(EntityHitResult entityHit) {
         DamageSource source = this.damageSources().thrown(this, this.getOwner());
         entityHit.getEntity().hurt(source, DAMAGE);
+        if(entityHit.getEntity() instanceof LivingEntity livingEntity){
+            livingEntity.addEffect(new MobEffectInstance(SotPEffectRegistry.PUNCTURED, 200, 0));
+        }
     }
 
     private void shatter(ServerLevel level) {

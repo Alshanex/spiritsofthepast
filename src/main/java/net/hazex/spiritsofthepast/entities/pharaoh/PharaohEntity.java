@@ -55,6 +55,8 @@ public class PharaohEntity extends Monster implements GeoEntity {
     public static final int ACTION_SUMMONING = 1;
     public static final int ACTION_CASTING = 2;
     public static final int ACTION_INSTANT_CAST = 3;
+    public static final int ACTION_SPAWNING = 4;
+    public static final int ACTION_SWEEP = 5;
 
     private static final EntityDataAccessor<Integer> DATA_ACTION = SynchedEntityData.defineId(PharaohEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_DYING = SynchedEntityData.defineId(PharaohEntity.class, EntityDataSerializers.BOOLEAN);
@@ -67,9 +69,13 @@ public class PharaohEntity extends Monster implements GeoEntity {
     private static final RawAnimation SWING = RawAnimation.begin().thenPlay("swing");
     private static final RawAnimation INSTANT_CAST = RawAnimation.begin().thenPlay("instant_cast");
     private static final RawAnimation DEATH = RawAnimation.begin().thenPlayAndHold("death");
+    private static final RawAnimation SPAWN = RawAnimation.begin().thenPlay("spawn");
+    private static final RawAnimation SWEEP = RawAnimation.begin().thenPlay("sweep");
 
     private static final int SWING_DURATION = 8;
     private static final int DEATH_DURATION = 65;
+    private static final int SPAWN_DURATION = 45;
+    public static final int SWEEP_DURATION = 10;
 
     private static final float REDUCTION_PER_MINION = 0.10F;
     private static final float MAX_REDUCTION = 0.50F;
@@ -86,7 +92,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
             BossEvent.BossBarColor.YELLOW,
             BossEvent.BossBarOverlay.PROGRESS);
 
-    public enum Ability { SUMMON, STORM, BOLT }
+    public enum Ability { SUMMON, STORM, BOLT, SWEEP }
 
     private static final int GLOBAL_ABILITY_GAP = 60;
 
@@ -95,6 +101,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
     private final List<UUID> minions = new ArrayList<>();
     private int actionTicks;
+    private int spawnTicks = SPAWN_DURATION;
 
     private int dyingTicks;
     @Nullable
@@ -107,6 +114,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         this.abilityCooldowns[Ability.SUMMON.ordinal()] = 260;
         this.abilityCooldowns[Ability.STORM.ordinal()] = 140;
         this.abilityCooldowns[Ability.BOLT.ordinal()] = 40;
+        this.abilityCooldowns[Ability.SWEEP.ordinal()] = 60;
     }
 
     public boolean abilityReady(Ability ability) {
@@ -165,10 +173,11 @@ public class PharaohEntity extends Monster implements GeoEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new SummonMinionsGoal(this));
-        this.goalSelector.addGoal(2, new SandstormGoal(this));
-        this.goalSelector.addGoal(3, new SandBoltGoal(this));
-        this.goalSelector.addGoal(4, new PharaohMeleeGoal(this, 1.0, true));
+        this.goalSelector.addGoal(1, new SweepAttackGoal(this));
+        this.goalSelector.addGoal(2, new SummonMinionsGoal(this));
+        this.goalSelector.addGoal(3, new SandstormGoal(this));
+        this.goalSelector.addGoal(4, new SandBoltGoal(this));
+        this.goalSelector.addGoal(5, new PharaohMeleeGoal(this, 1.0, true));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.8) {
             @Override
             public boolean canUse() {
@@ -206,6 +215,10 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
     public boolean isBusy() {
         return getAction() != ACTION_NONE;
+    }
+
+    public boolean isSpawning() {
+        return getAction() == ACTION_SPAWNING;
     }
 
     // Minions
@@ -377,6 +390,19 @@ public class PharaohEntity extends Monster implements GeoEntity {
     protected void customServerAiStep(ServerLevel level) {
         super.customServerAiStep(level);
 
+        if (isSpawning()) {
+            this.getNavigation().stop();
+            this.setDeltaMovement(0.0, this.getDeltaMovement().y, 0.0);
+            this.setTarget(null);
+
+            if (--this.spawnTicks <= 0) {
+                releaseAction();
+            }
+
+            this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+            return;
+        }
+
         tickCooldowns();
 
         if (this.actionTicks > 0 && --this.actionTicks == 0) {
@@ -418,13 +444,19 @@ public class PharaohEntity extends Monster implements GeoEntity {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        builder.define(DATA_ACTION, ACTION_NONE);
+        builder.define(DATA_ACTION, ACTION_SPAWNING);
         builder.define(DATA_DYING, false);
     }
 
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
         super.readAdditionalSaveData(input);
+
+        this.spawnTicks = input.getIntOr("SpawnTicks", SPAWN_DURATION);
+        if (this.spawnTicks <= 0) {
+            setAction(ACTION_NONE);
+        }
+
         if (this.hasCustomName()) {
             this.bossEvent.setName(this.getDisplayName());
         }
@@ -433,6 +465,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
     @Override
     protected void addAdditionalSaveData(ValueOutput output) {
         super.addAdditionalSaveData(output);
+        output.putInt("SpawnTicks", isSpawning() ? this.spawnTicks : 0);
     }
 
     @Override
@@ -456,10 +489,16 @@ public class PharaohEntity extends Monster implements GeoEntity {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>("locomotion", 5, test -> {
+            if (isSpawning()) {
+                return test.setAndContinue(SPAWN);
+            }
             if (isDying()) {
                 return test.setAndContinue(DEATH);
             }
             int action = getAction();
+            if (action == ACTION_SWEEP) {
+                return test.setAndContinue(SWEEP);
+            }
             if (action == ACTION_SUMMONING) {
                 return test.setAndContinue(SUMMONING);
             }
@@ -473,7 +512,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         }));
 
         controllers.add(new AnimationController<>("arms", 3, test -> {
-            if (isDying()) {
+            if (isSpawning() || isDying() || getAction() == ACTION_SWEEP) {
                 return PlayState.STOP;
             }
             if (getAction() == ACTION_INSTANT_CAST) {

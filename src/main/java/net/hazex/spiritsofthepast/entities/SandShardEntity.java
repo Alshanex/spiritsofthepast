@@ -1,5 +1,6 @@
 package net.hazex.spiritsofthepast.entities;
 
+import net.hazex.spiritsofthepast.SpiritsofthePast;
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -12,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -33,8 +35,12 @@ public class SandShardEntity extends Projectile {
     private static final int MAX_LIFETIME = 200;
     private static final double GRAVITY = 0.045;
     private static final double DRAG = 0.98;
-    private static final float IMPACT_DAMAGE = 2.0F;
+    private static final float IMPACT_DAMAGE = 4.0F;
+    private static final double SPLASH_RADIUS = 3.0;
+    private static final double COLLISION_HEADROOM = 3.0;
     private static final int COLLISION_STEPS = 4;
+
+    private static final boolean DEBUG_SPLASH = false;
 
     private int life;
 
@@ -85,7 +91,7 @@ public class SandShardEntity extends Projectile {
         boolean impacted = false;
         EntityHitResult entityHit = null;
 
-        if (stop.y <= this.collisionStartY) {
+        if (stop.y <= this.collisionStartY + COLLISION_HEADROOM) {
             double clear = freeFraction(motion);
             if (clear < 1.0) {
                 stop = from.add(motion.scale(clear));
@@ -142,20 +148,52 @@ public class SandShardEntity extends Projectile {
     private void onImpact(ServerLevel level, @Nullable EntityHitResult entityHit) {
         BlockState state = this.getBlockState();
 
-        if (entityHit != null && IMPACT_DAMAGE > 0.0F) {
-            entityHit.getEntity().hurt(this.damageSources().fallingBlock(this), IMPACT_DAMAGE);
-        }
+        splashDamage(level);
 
         level.sendParticles(
                 new BlockParticleOption(ParticleTypes.BLOCK, state),
                 this.getX(), this.getY() + 0.25, this.getZ(),
-                20, 0.25, 0.25, 0.25, 0.05);
+                40, SPLASH_RADIUS * 0.4, 0.3, SPLASH_RADIUS * 0.4, 0.15);
 
         level.playSound(null, this.getX(), this.getY(), this.getZ(),
                 SoundEvents.SAND_BREAK, SoundSource.BLOCKS,
-                0.5F, 0.8F + this.random.nextFloat() * 0.4F);
+                0.7F, 0.8F + this.random.nextFloat() * 0.4F);
 
         this.discard();
+    }
+
+    private void splashDamage(ServerLevel level) {
+        if (IMPACT_DAMAGE <= 0.0F) {
+            return;
+        }
+
+        Vec3 centre = this.position();
+        AABB area = new AABB(centre, centre).inflate(SPLASH_RADIUS);
+        DamageSource source = this.damageSources().fallingBlock(this);
+
+        if (DEBUG_SPLASH) {
+            SpiritsofthePast.LOGGER.debug("[shard] impact at " + centre
+                    + " radius=" + SPLASH_RADIUS
+                    + " box=" + area
+                    + " candidates=" + level.getEntitiesOfClass(LivingEntity.class, area, t -> true).size());
+        }
+
+        for (LivingEntity victim : level.getEntitiesOfClass(LivingEntity.class, area,
+                target -> target.isAlive() && !target.isSpectator() && !isFriendly(target))) {
+
+            double distSqr = victim.getBoundingBox().getCenter().distanceToSqr(centre);
+            if (DEBUG_SPLASH) {
+                SpiritsofthePast.LOGGER.debug("[shard]   candidate " + victim.getName().getString()
+                        + " dist=" + Math.sqrt(distSqr)
+                        + " friendly=" + isFriendly(victim));
+            }
+            if (distSqr > SPLASH_RADIUS * SPLASH_RADIUS) {
+                continue;
+            }
+
+            victim.invulnerableTime = 0;
+            victim.hurtServer(level, source, IMPACT_DAMAGE);
+        }
     }
 
     @Override
