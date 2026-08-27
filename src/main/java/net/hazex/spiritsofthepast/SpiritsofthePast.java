@@ -1,10 +1,7 @@
 package net.hazex.spiritsofthepast;
 
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
-import net.hazex.spiritsofthepast.registries.SotPCreativeModeTabs;
-import net.hazex.spiritsofthepast.registries.SotPEffectRegistry;
-import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
-import net.hazex.spiritsofthepast.registries.SotPItemRegistry;
+import net.hazex.spiritsofthepast.registries.*;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -42,6 +39,8 @@ public class SpiritsofthePast {
         SotPItemRegistry.register(modEventBus);
         SotPCreativeModeTabs.register(modEventBus);
         SotPEffectRegistry.register(modEventBus);
+        SotPBlockRegistry.register(modEventBus);
+        SotPBlockEntityRegistry.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

@@ -1,9 +1,11 @@
 package net.hazex.spiritsofthepast;
 
+import com.geckolib.renderer.GeoBlockRenderer;
 import net.hazex.spiritsofthepast.entities.javelin.FossilizedJavelinRenderer;
 import net.hazex.spiritsofthepast.entities.sandstone.SandShardRenderer;
 import net.hazex.spiritsofthepast.entities.sandstone.SandstoneBoltRenderer;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohRenderer;
+import net.hazex.spiritsofthepast.registries.SotPBlockEntityRegistry;
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.neoforged.api.distmarker.Dist;
@@ -42,6 +44,14 @@ public class SpiritsofthePastClient {
                 context -> new PharaohRenderer<>(context, SotPEntityRegistry.PHARAOH.get()));
 
         event.registerEntityRenderer(SotPEntityRegistry.FOSSILIZED_JAVELIN.get(), FossilizedJavelinRenderer::new);
+
+        event.registerBlockEntityRenderer(
+                SotPBlockEntityRegistry.PHARAOHS_TOMB_BE.get(),
+                context -> new GeoBlockRenderer<>(context, SotPBlockEntityRegistry.PHARAOHS_TOMB_BE.get()));
+
+        event.registerBlockEntityRenderer(
+                SotPBlockEntityRegistry.EMPTY_TOMB_BE.get(),
+                context -> new GeoBlockRenderer<>(context, SotPBlockEntityRegistry.EMPTY_TOMB_BE.get()));
     }
 
     @SubscribeEvent

@@ -5,6 +5,7 @@ import net.hazex.spiritsofthepast.items.Weapons.AnkhStaffItem;
 import net.hazex.spiritsofthepast.items.Utils.SotPArmorMaterials;
 import net.hazex.spiritsofthepast.items.Utils.SotPToolTiers;
 import net.hazex.spiritsofthepast.items.Weapons.FossilizedJavelinItem;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
@@ -76,6 +77,9 @@ public class SotPItemRegistry {
             "fossil_boots",
             properties -> new Item(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.BOOTS)));
 
+    //Blocks
+    public static final DeferredItem<BlockItem> PHARAOHS_TOMB_ITEM =
+            ITEMS.registerSimpleBlockItem("pharaohs_tomb", SotPBlockRegistry.PHARAOHS_TOMB);
 
     public static void register(IEventBus modEventBus){
         ITEMS.register(modEventBus);

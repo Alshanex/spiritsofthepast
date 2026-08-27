@@ -38,6 +38,9 @@ public class SotPCreativeModeTabs {
                         output.accept(SotPItemRegistry.AMBER);
                         output.accept(SotPItemRegistry.FOSSIL);
 
+                        //Blocks
+                        output.accept(SotPItemRegistry.PHARAOHS_TOMB_ITEM);
+
 
                     }).build());
 
