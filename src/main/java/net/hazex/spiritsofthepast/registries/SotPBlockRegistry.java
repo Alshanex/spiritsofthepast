@@ -55,7 +55,7 @@ public class SotPBlockRegistry {
             CrumblingSandstoneBlock::new,
             props -> props
                     .mapColor(MapColor.SAND)
-                    .strength(0.8F)
+                    .strength(0.3F)
                     .sound(SoundType.STONE)
                     .requiresCorrectToolForDrops());
 
