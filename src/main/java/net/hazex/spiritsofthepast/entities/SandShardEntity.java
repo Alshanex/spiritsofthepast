@@ -1,6 +1,6 @@
 package net.hazex.spiritsofthepast.entities;
 
-import net.hazex.spiritsofthepast.registries.EntityRegistry;
+import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -47,7 +47,7 @@ public class SandShardEntity extends Projectile {
     }
 
     public SandShardEntity(Level level, double x, double y, double z, BlockState state) {
-        this(EntityRegistry.SAND_SHARD.get(), level);
+        this(SotPEntityRegistry.SAND_SHARD.get(), level);
         this.setPos(x, y, z);
         this.setBlockState(state);
     }

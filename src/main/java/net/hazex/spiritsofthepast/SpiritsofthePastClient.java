@@ -3,8 +3,7 @@ package net.hazex.spiritsofthepast;
 import net.hazex.spiritsofthepast.entities.SandShardRenderer;
 import net.hazex.spiritsofthepast.entities.SandstoneBoltRenderer;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohRenderer;
-import net.hazex.spiritsofthepast.registries.EntityRegistry;
-import net.minecraft.client.Minecraft;
+import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -35,11 +34,11 @@ public class SpiritsofthePastClient {
 
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(EntityRegistry.SAND_SHARD.get(), SandShardRenderer::new);
-        event.registerEntityRenderer(EntityRegistry.SANDFALL_EMITTER.get(), NoopRenderer::new);
-        event.registerEntityRenderer(EntityRegistry.SANDSTONE_BOLT.get(), SandstoneBoltRenderer::new);
-        event.registerEntityRenderer(EntityRegistry.PHARAOH.get(),
-                context -> new PharaohRenderer<>(context, EntityRegistry.PHARAOH.get()));
+        event.registerEntityRenderer(SotPEntityRegistry.SAND_SHARD.get(), SandShardRenderer::new);
+        event.registerEntityRenderer(SotPEntityRegistry.SANDFALL_EMITTER.get(), NoopRenderer::new);
+        event.registerEntityRenderer(SotPEntityRegistry.SANDSTONE_BOLT.get(), SandstoneBoltRenderer::new);
+        event.registerEntityRenderer(SotPEntityRegistry.PHARAOH.get(),
+                context -> new PharaohRenderer<>(context, SotPEntityRegistry.PHARAOH.get()));
     }
 
     @SubscribeEvent

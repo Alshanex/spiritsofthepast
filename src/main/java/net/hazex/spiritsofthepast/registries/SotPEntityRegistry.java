@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class EntityRegistry {
+public class SotPEntityRegistry {
     public static final DeferredRegister.Entities ENTITY_TYPES = DeferredRegister.createEntities(SpiritsofthePast.MODID);
 
     public static final Supplier<EntityType<SandfallEmitterEntity>> SANDFALL_EMITTER =

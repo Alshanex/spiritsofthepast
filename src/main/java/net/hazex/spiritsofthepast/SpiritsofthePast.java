@@ -1,26 +1,17 @@
 package net.hazex.spiritsofthepast;
 
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
-import net.hazex.spiritsofthepast.registries.EntityRegistry;
-import net.hazex.spiritsofthepast.registries.ItemRegistry;
+import net.hazex.spiritsofthepast.registries.SotPCreativeModeTabs;
+import net.hazex.spiritsofthepast.registries.SotPEffectRegistry;
+import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
+import net.hazex.spiritsofthepast.registries.SotPItemRegistry;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -30,10 +21,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(SpiritsofthePast.MODID)
@@ -48,15 +35,13 @@ public class SpiritsofthePast {
     public SpiritsofthePast(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (SpiritsofthePast) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        EntityRegistry.register(modEventBus);
+        SotPEntityRegistry.register(modEventBus);
 
-        ItemRegistry.register(modEventBus);
+        SotPItemRegistry.register(modEventBus);
+        SotPCreativeModeTabs.register(modEventBus);
+        SotPEffectRegistry.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -64,7 +49,7 @@ public class SpiritsofthePast {
         modEventBus.addListener(this::registerAttributes);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, SotPConfig.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -74,12 +59,23 @@ public class SpiritsofthePast {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            event.accept(ItemRegistry.ANKH_STAFF);
+            event.accept(SotPItemRegistry.ANKH_STAFF);
+            event.accept(SotPItemRegistry.AMBER_SPEAR);
+            event.accept(SotPItemRegistry.KHOPESH);
+
+            event.accept(SotPItemRegistry.FOSSIL_HELMET);
+            event.accept(SotPItemRegistry.FOSSIL_CHESTPLATE);
+            event.accept(SotPItemRegistry.FOSSIL_LEGGINGS);
+            event.accept(SotPItemRegistry.FOSSIL_BOOTS);
+        }
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(SotPItemRegistry.AMBER);
+            event.accept(SotPItemRegistry.FOSSIL);
         }
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(EntityRegistry.PHARAOH.get(), PharaohEntity.createAttributes().build());
+        event.put(SotPEntityRegistry.PHARAOH.get(), PharaohEntity.createAttributes().build());
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

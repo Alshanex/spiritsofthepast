@@ -1,6 +1,6 @@
 package net.hazex.spiritsofthepast.entities;
 
-import net.hazex.spiritsofthepast.registries.EntityRegistry;
+import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -48,7 +48,7 @@ public class SandstoneBoltEntity extends Projectile {
     }
 
     public SandstoneBoltEntity(Level level, @Nullable LivingEntity owner, double x, double y, double z) {
-        this(EntityRegistry.SANDSTONE_BOLT.get(), level);
+        this(SotPEntityRegistry.SANDSTONE_BOLT.get(), level);
         this.setPos(x, y, z);
         this.setOwner(owner);
     }

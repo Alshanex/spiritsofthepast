@@ -1,0 +1,6 @@
+{
+  "parent": "spiritsofthepast:item/large_item",
+  "textures": {
+    "layer0": "spiritsofthepast:item/weapons/khopesh"
+  }
+}

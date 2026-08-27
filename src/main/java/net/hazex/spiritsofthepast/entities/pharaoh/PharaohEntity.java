@@ -7,17 +7,13 @@ import com.geckolib.animation.AnimationController;
 import com.geckolib.animation.RawAnimation;
 import com.geckolib.animation.object.PlayState;
 import com.geckolib.util.GeckoLibUtil;
-import net.hazex.spiritsofthepast.SpiritsofthePast;
 import net.hazex.spiritsofthepast.entities.pharaoh.ai.*;
-import net.hazex.spiritsofthepast.registries.ItemRegistry;
+import net.hazex.spiritsofthepast.registries.SotPItemRegistry;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -358,7 +354,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
         this.bossEvent.removeAllPlayers();
 
-        ItemStack stack = new ItemStack(ItemRegistry.ANKH_STAFF.get());
+        ItemStack stack = new ItemStack(SotPItemRegistry.ANKH_STAFF.get());
         ItemEntity drop = new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), stack);
         this.level().addFreshEntity(drop);
 

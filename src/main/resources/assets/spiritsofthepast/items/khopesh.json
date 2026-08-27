@@ -1,0 +1,24 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "spiritsofthepast:item/khopesh"
+        },
+        "when": [
+          "gui",
+          "ground",
+          "fixed",
+          "on_shelf"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "spiritsofthepast:item/khopesh_in_hand"
+    },
+    "property": "minecraft:display_context"
+  }
+}

@@ -1,6 +1,6 @@
 package net.hazex.spiritsofthepast.entities;
 
-import net.hazex.spiritsofthepast.registries.EntityRegistry;
+import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
@@ -37,7 +37,7 @@ public class SandfallEmitterEntity extends Entity {
     }
 
     public SandfallEmitterEntity(Level level, double x, double y, double z) {
-        this(EntityRegistry.SANDFALL_EMITTER.get(), level);
+        this(SotPEntityRegistry.SANDFALL_EMITTER.get(), level);
         this.setPos(x, y, z);
     }
 

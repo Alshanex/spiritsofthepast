@@ -69,7 +69,6 @@ public class AnkhStaffItem extends Item implements GeoItem {
 
     @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
-        // We can fill this in later
     }
 
     @Override
