@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.blocks;
+package net.hazex.spiritsofthepast.blocks.tomb;
 
 import net.hazex.spiritsofthepast.registries.SotPBlockRegistry;
 import net.minecraft.core.BlockPos;

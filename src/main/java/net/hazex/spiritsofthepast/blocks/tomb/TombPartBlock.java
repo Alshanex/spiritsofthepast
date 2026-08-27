@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.blocks;
+package net.hazex.spiritsofthepast.blocks.tomb;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

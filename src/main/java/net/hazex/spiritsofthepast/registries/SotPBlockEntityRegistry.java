@@ -1,8 +1,8 @@
 package net.hazex.spiritsofthepast.registries;
 
 import net.hazex.spiritsofthepast.SpiritsofthePast;
-import net.hazex.spiritsofthepast.blocks.EmptyTombBlockEntity;
-import net.hazex.spiritsofthepast.blocks.PharaohsTombBlockEntity;
+import net.hazex.spiritsofthepast.blocks.tomb.EmptyTombBlockEntity;
+import net.hazex.spiritsofthepast.blocks.tomb.PharaohsTombBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;

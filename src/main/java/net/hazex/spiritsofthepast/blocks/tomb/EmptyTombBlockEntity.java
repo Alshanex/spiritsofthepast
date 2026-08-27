@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.blocks;
+package net.hazex.spiritsofthepast.blocks.tomb;
 
 import com.geckolib.animatable.GeoBlockEntity;
 import com.geckolib.animatable.instance.AnimatableInstanceCache;

@@ -81,6 +81,9 @@ public class SotPItemRegistry {
     public static final DeferredItem<BlockItem> PHARAOHS_TOMB_ITEM =
             ITEMS.registerSimpleBlockItem("pharaohs_tomb", SotPBlockRegistry.PHARAOHS_TOMB);
 
+    public static final DeferredItem<BlockItem> CRUMBLING_SANDSTONE_ITEM =
+            ITEMS.registerSimpleBlockItem("crumbling_sandstone", SotPBlockRegistry.CRUMBLING_SANDSTONE);
+
     public static void register(IEventBus modEventBus){
         ITEMS.register(modEventBus);
     }

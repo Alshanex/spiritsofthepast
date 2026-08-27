@@ -1,9 +1,10 @@
 package net.hazex.spiritsofthepast.registries;
 
 import net.hazex.spiritsofthepast.SpiritsofthePast;
-import net.hazex.spiritsofthepast.blocks.EmptyTombBlock;
-import net.hazex.spiritsofthepast.blocks.PharaohsTombBlock;
-import net.hazex.spiritsofthepast.blocks.TombPartBlock;
+import net.hazex.spiritsofthepast.blocks.cracked_sandstone.CrumblingSandstoneBlock;
+import net.hazex.spiritsofthepast.blocks.tomb.EmptyTombBlock;
+import net.hazex.spiritsofthepast.blocks.tomb.PharaohsTombBlock;
+import net.hazex.spiritsofthepast.blocks.tomb.TombPartBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -48,6 +49,15 @@ public class SotPBlockRegistry {
                     .noLootTable()
                     .dynamicShape()
                     .pushReaction(PushReaction.BLOCK));
+
+    public static final DeferredBlock<CrumblingSandstoneBlock> CRUMBLING_SANDSTONE = BLOCKS.registerBlock(
+            "crumbling_sandstone",
+            CrumblingSandstoneBlock::new,
+            props -> props
+                    .mapColor(MapColor.SAND)
+                    .strength(0.8F)
+                    .sound(SoundType.STONE)
+                    .requiresCorrectToolForDrops());
 
     public static void register(IEventBus modEventBus){
         BLOCKS.register(modEventBus);

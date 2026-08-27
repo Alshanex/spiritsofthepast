@@ -40,6 +40,7 @@ public class SotPCreativeModeTabs {
 
                         //Blocks
                         output.accept(SotPItemRegistry.PHARAOHS_TOMB_ITEM);
+                        output.accept(SotPItemRegistry.CRUMBLING_SANDSTONE_ITEM);
 
 
                     }).build());
