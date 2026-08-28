@@ -158,7 +158,7 @@ public class SandShardEntity extends Projectile {
 
         level.playSound(null, this.getX(), this.getY(), this.getZ(),
                 SotPSoundRegistry.SANDSTONE_IMPACT.get(), SoundSource.BLOCKS,
-                0.7F, 0.8F + this.random.nextFloat() * 0.4F);
+                0.3F, 0.8F + this.random.nextFloat() * 0.4F);
 
         this.discard();
     }
