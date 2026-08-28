@@ -1,6 +1,21 @@
 {
   "item.spiritsofthepast.ankh_staff": "Ankh Staff",
+  "item.spiritsofthepast.khopesh": "Khopesh",
+  "item.spiritsofthepast.amber_spear": "Amber Spear",
+  "item.spiritsofthepast.javelin": "Javelin",
+
+  "item.spiritsofthepast.fossil_helmet": "Fossil Mask",
+  "item.spiritsofthepast.fossil_chestplate": "Fossil Chestplate",
+  "item.spiritsofthepast.fossil_leggings": "Fossil Leggings",
+  "item.spiritsofthepast.fossil_boots": "Fossil Boots",
+
+  "effect.spiritsofthepast.punctured": "Punctured",
+  "effect.spiritsofthepast.fossil_set_bonus": "Fossil Set Bonus",
+
   "entity.spiritsofthepast.pharaoh": "Pharaoh",
   "entity.spiritsofthepast.sand_shard": "Sand Shard",
-  "entity.spiritsofthepast.sandfall_emitter": "Sandfall"
+  "entity.spiritsofthepast.sandfall_emitter": "Sandfall",
+
+  "creativetab.spiritsofthepast.items": "Spirits of the Past Items",
+  "creativetab.spiritsofthepast.blocks": "Spirits of the Past Blocks"
 }

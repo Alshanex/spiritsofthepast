@@ -35,6 +35,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -111,7 +112,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         super(type, level);
         this.setPersistenceRequired();
 
-        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 260;
+        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 600;
         this.abilityCooldowns[Ability.STORM.ordinal()] = 140;
         this.abilityCooldowns[Ability.BOLT.ordinal()] = 40;
         this.abilityCooldowns[Ability.SWEEP.ordinal()] = 60;
@@ -165,6 +166,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
                 .add(Attributes.MAX_HEALTH, 300.0)
                 .add(Attributes.ATTACK_DAMAGE, 9.0)
                 .add(Attributes.ARMOR, 8.0)
+                .add(Attributes.ARMOR_TOUGHNESS, 2.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(Attributes.FOLLOW_RANGE, 48.0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0);
@@ -288,7 +290,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
     }
 
     public void applyAxeHusk(Mob husk) {
-        husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.COPPER_AXE));
+        husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SotPItemRegistry.KHOPESH.asItem()));
         husk.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.IRON_CHESTPLATE));
     }
 

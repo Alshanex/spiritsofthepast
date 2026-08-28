@@ -45,16 +45,16 @@ public class SotPCreativeModeTabs {
 
                     }).build());
 
-    /*
     public static final Supplier<CreativeModeTab> SOTP_BLOCKS = CREATIVE_MODE_TABS.register("spiritsofthepast_blocks",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(SotPBlocks.SANDSTONE_BRICK.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(SotPBlockRegistry.CRUMBLING_SANDSTONE.get()))
                     .title(Component.translatable("creativetab.spiritsofthepast.blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(SotPBlocks.SANDSTONE_BRICK);
+                        output.accept(SotPBlockRegistry.CRUMBLING_SANDSTONE);
+                        output.accept(SotPBlockRegistry.PHARAOHS_TOMB);
 
 
                     }).build());
-    */
+
 
 
     public static void register(IEventBus eventBus) {

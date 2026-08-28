@@ -2,6 +2,7 @@ package net.hazex.spiritsofthepast;
 
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
 import net.hazex.spiritsofthepast.registries.*;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -22,10 +23,14 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(SpiritsofthePast.MODID)
 public class SpiritsofthePast {
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "spiritsofthepast";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static final Identifier BASE_ID = Identifier.fromNamespaceAndPath(MODID, "");
+
+    /// Create a new [Identifier] with this mod's namespace
+    public static Identifier id(String path) {
+        return BASE_ID.withPath(path);
+    }
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.

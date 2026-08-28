@@ -1,6 +1,8 @@
 package net.hazex.spiritsofthepast.registries;
 
+import io.redspace.ironslib.registry.IronsLibRegistries;
 import net.hazex.spiritsofthepast.SpiritsofthePast;
+import net.hazex.spiritsofthepast.effects.FossilSetBonusEffect;
 import net.hazex.spiritsofthepast.effects.PuncturedEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -26,6 +28,19 @@ public class SotPEffectRegistry {
                     .addAttributeModifier(Attributes.ARMOR_TOUGHNESS,
                             Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "punctured_toughness"),
                             PuncturedEffect.REDUCED_TOUGHNESS_PER_LEVEL,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+    );
+
+    public static final Holder<MobEffect> FOSSIL_SET_BONUS = MOB_EFFECTS.register("fossil_set_bonus",
+            () -> new FossilSetBonusEffect(MobEffectCategory.HARMFUL, 11101546)
+                    .addAttributeModifier(Attributes.MOVEMENT_SPEED,
+                            Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "fossil_set_bonus"),
+                            FossilSetBonusEffect.MOVEMENT_SPEED_PER_LEVEL,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+
+                    .addAttributeModifier(IronsLibRegistries.AttributeRegistry.CRIT_DAMAGE,
+                            Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "fossil_set_bonus"),
+                            FossilSetBonusEffect.CRIT_DAMAGE_PER_LEVEL,
                             AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
     );
 
