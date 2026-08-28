@@ -23,11 +23,19 @@ public class SotPArmorMaterials {
     public static ResourceKey<EquipmentAsset> FOSSIL_KEY = ResourceKey.create(ROOT_ID,
             Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "fossil"));
 
+    public static ResourceKey<EquipmentAsset> MEDJAY_KEY = ResourceKey.create(ROOT_ID,
+            Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "medjay"));
+
     public static final ArmorMaterial FOSSIL_ARMOR_MATERIAL = new ArmorMaterial(29,
             makeDefense(3, 6, 8, 3, 12), 18, SoundEvents.ARMOR_EQUIP_IRON,
             1f,
             0f,
             SotPTags.Items.FOSSIL_REPAIR, FOSSIL_KEY);
+    public static final ArmorMaterial MEDJAY_ARMOR_MATERIAL = new ArmorMaterial(29,
+            makeDefense(3, 6, 8, 3, 12), 18, SoundEvents.ARMOR_EQUIP_IRON,
+            1f,
+            0f,
+            SotPTags.Items.MEDJAY_REPAIR, MEDJAY_KEY);
 
 
     private static Map<ArmorType, Integer> makeDefense(int boots, int legs, int chest, int helm, int body) {

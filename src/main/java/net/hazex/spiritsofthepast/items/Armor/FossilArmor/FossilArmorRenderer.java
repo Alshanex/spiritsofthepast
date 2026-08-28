@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.items.Armor;
+package net.hazex.spiritsofthepast.items.Armor.FossilArmor;
 
 import com.geckolib.model.DefaultedItemGeoModel;
 import com.geckolib.renderer.GeoArmorRenderer;

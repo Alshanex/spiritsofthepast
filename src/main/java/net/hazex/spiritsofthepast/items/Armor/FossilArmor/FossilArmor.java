@@ -1,4 +1,4 @@
-package net.hazex.spiritsofthepast.items.Armor;
+package net.hazex.spiritsofthepast.items.Armor.FossilArmor;
 
 import com.geckolib.animatable.GeoItem;
 import com.geckolib.animatable.client.GeoRenderProvider;
@@ -26,7 +26,7 @@ import java.util.function.Supplier;
 public class FossilArmor extends Item implements GeoItem {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
-    public FossilArmor() {
+    public FossilArmor(Properties properties) {
         super(new Item.Properties()
                 .rarity(Rarity.RARE)
         );

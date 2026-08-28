@@ -1,0 +1,29 @@
+{
+  "disturbed_sands": {
+    "sounds": [
+      {
+        "name": "spiritsofthepast:disturbed_sands",
+        "stream": true
+      }
+    ],
+    "subtitle": "sounds.spiritsofthepast.disturbed_sands"
+  },
+  "sandstone_impact": {
+    "sounds": [
+      "spiritsofthepast:sandstone_impact"
+    ],
+    "subtitle": "sounds.spiritsofthepast.sandstone_impact"
+  },
+  "summon_minions": {
+    "sounds": [
+      "spiritsofthepast:summon_minions"
+    ],
+    "subtitle": "sounds.spiritsofthepast.summon_minions"
+  },
+  "pharaoh_summon_1": {
+    "sounds": [
+      "spiritsofthepast:pharaoh_summon_1"
+    ],
+    "subtitle": "sounds.spiritsofthepast.pharaoh_summon_1"
+  }
+}

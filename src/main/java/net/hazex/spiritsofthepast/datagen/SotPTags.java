@@ -12,6 +12,7 @@ public class SotPTags {
 
     public static class Blocks {
         public static final TagKey<Block> INCORRECT_FOR_FOSSIL_TOOL = createTag("incorrect_for_fossil_tool");
+        public static final TagKey<Block> INCORRECT_FOR_MEDJAY_TOOL = createTag("incorrect_for_medjay_tool");
 
 
         private static TagKey<Block> createTag(String name) {
@@ -24,6 +25,7 @@ public class SotPTags {
 
 
         public static final TagKey<Item> FOSSIL_REPAIR = createTag("fossil_repair");
+        public static final TagKey<Item> MEDJAY_REPAIR = createTag("medjay_repair");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, name));

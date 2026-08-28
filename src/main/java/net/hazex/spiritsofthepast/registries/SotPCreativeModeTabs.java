@@ -3,6 +3,7 @@ package net.hazex.spiritsofthepast.registries;
 import net.hazex.spiritsofthepast.SpiritsofthePast;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +20,7 @@ public class SotPCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(SotPItemRegistry.FOSSIL_HELMET.get()))
                     .title(Component.translatable("creativetab.spiritsofthepast.items"))
                     .withTabsBefore(CreativeModeTabs.INGREDIENTS)
-                    //.withTabsAfter(Identifier.fromNamespaceAndPath(SpiritsofthePast.MOD_ID, "spiritsofthepast_blocks"))
+                    .withTabsAfter(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "spiritsofthepast_blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         // Weapons
@@ -38,9 +39,8 @@ public class SotPCreativeModeTabs {
                         output.accept(SotPItemRegistry.AMBER);
                         output.accept(SotPItemRegistry.FOSSIL);
 
-                        //Blocks
-                        output.accept(SotPItemRegistry.PHARAOHS_TOMB_ITEM);
-                        output.accept(SotPItemRegistry.CRUMBLING_SANDSTONE_ITEM);
+                        // Misc
+                        output.accept(SotPItemRegistry.DISTURBED_SANDS_MUSIC_DISC);
 
 
                     }).build());

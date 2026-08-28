@@ -2,6 +2,7 @@ package net.hazex.spiritsofthepast.entities.sandstone;
 
 import net.hazex.spiritsofthepast.SpiritsofthePast;
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
+import net.hazex.spiritsofthepast.registries.SotPSoundRegistry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -156,7 +157,7 @@ public class SandShardEntity extends Projectile {
                 40, SPLASH_RADIUS * 0.4, 0.3, SPLASH_RADIUS * 0.4, 0.15);
 
         level.playSound(null, this.getX(), this.getY(), this.getZ(),
-                SoundEvents.SAND_BREAK, SoundSource.BLOCKS,
+                SotPSoundRegistry.SANDSTONE_IMPACT.get(), SoundSource.BLOCKS,
                 0.7F, 0.8F + this.random.nextFloat() * 0.4F);
 
         this.discard();

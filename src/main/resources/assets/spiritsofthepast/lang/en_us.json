@@ -3,14 +3,27 @@
   "item.spiritsofthepast.khopesh": "Khopesh",
   "item.spiritsofthepast.amber_spear": "Amber Spear",
   "item.spiritsofthepast.javelin": "Javelin",
+  "item.spiritsofthepast.medjay_spear": "Medjay Spear",
 
   "item.spiritsofthepast.fossil_helmet": "Fossil Mask",
   "item.spiritsofthepast.fossil_chestplate": "Fossil Chestplate",
   "item.spiritsofthepast.fossil_leggings": "Fossil Leggings",
   "item.spiritsofthepast.fossil_boots": "Fossil Boots",
 
+  "item.spiritsofthepast.medjay_helmet": "Medjay Crown",
+  "item.spiritsofthepast.medjay_chestplate": "Medjay Chestplate",
+  "item.spiritsofthepast.medjay_leggings": "Medjay Skirt",
+  "item.spiritsofthepast.medjay_boots": "Medjay Anklet Bracer",
+
+  "item.spiritsofthepast.disturbed_sands_music_disc": "Disturbed Sands Music Disc",
+  "jukebox_song.spiritsofthepast.disturbed_sands": "Hazentouvel - Disturbed Sands (ARR)",
+
   "effect.spiritsofthepast.punctured": "Punctured",
   "effect.spiritsofthepast.fossil_set_bonus": "Fossil Set Bonus",
+
+  "sounds.spiritsofthepast.disturbed_sands": "Disturbed Sands",
+  "sounds.spiritsofthepast.sandstone_impact": "Sandstone Impact",
+  "sounds.spiritsofthepast.summon_minions": "Summoning Minions",
 
   "entity.spiritsofthepast.pharaoh": "Pharaoh",
   "entity.spiritsofthepast.sand_shard": "Sand Shard",

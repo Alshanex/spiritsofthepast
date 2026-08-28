@@ -40,6 +40,7 @@ public class SpiritsofthePast {
         NeoForge.EVENT_BUS.register(this);
 
         SotPEntityRegistry.register(modEventBus);
+        SotPSoundRegistry.register(modEventBus);
 
         SotPItemRegistry.register(modEventBus);
         SotPCreativeModeTabs.register(modEventBus);

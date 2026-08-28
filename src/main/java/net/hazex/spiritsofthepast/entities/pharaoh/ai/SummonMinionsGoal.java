@@ -1,6 +1,7 @@
 package net.hazex.spiritsofthepast.entities.pharaoh.ai;
 
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
+import net.hazex.spiritsofthepast.registries.SotPSoundRegistry;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -46,7 +47,9 @@ public class SummonMinionsGoal extends Goal {
         this.spawned = false;
         this.pharaoh.startAction(PharaohEntity.ACTION_SUMMONING, CAST_TICKS);
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
-                SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.HOSTILE, 1.5F, 0.7F);
+                SotPSoundRegistry.SUMMON_MINIONS.get(), SoundSource.HOSTILE, 1F, 1F);
+        this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
+                SotPSoundRegistry.PHARAOH_SUMMON_1.get(), SoundSource.HOSTILE, 1.5F, 1F);
     }
 
     @Override

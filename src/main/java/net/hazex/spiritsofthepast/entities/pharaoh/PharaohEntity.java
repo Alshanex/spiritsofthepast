@@ -9,6 +9,7 @@ import com.geckolib.animation.object.PlayState;
 import com.geckolib.util.GeckoLibUtil;
 import net.hazex.spiritsofthepast.entities.pharaoh.ai.*;
 import net.hazex.spiritsofthepast.registries.SotPItemRegistry;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -17,6 +18,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -39,6 +42,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.util.Mth;
@@ -281,7 +285,23 @@ public class PharaohEntity extends Monster implements GeoEntity {
     }
 
     public void applySpearHusk(Mob husk) {
-        husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SPEAR));
+        husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SotPItemRegistry.MEDJAY_SPEAR.get()));
+    }
+
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.PARCHED_AMBIENT;
+    }
+
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return SoundEvents.PARCHED_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.PARCHED_DEATH;
+    }
+
+    protected void playStepSound(BlockPos pPos, BlockState pState) {
+        this.playSound(SoundEvents.PARCHED_STEP, .25f, 1f);
     }
 
     public void applyShieldHusk(Mob husk) {
@@ -291,7 +311,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
     public void applyAxeHusk(Mob husk) {
         husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SotPItemRegistry.KHOPESH.asItem()));
-        husk.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.IRON_CHESTPLATE));
+        husk.setItemSlot(EquipmentSlot.CHEST, new ItemStack(SotPItemRegistry.MEDJAY_CHESTPLATE.asItem()));
     }
 
     public void applyParchedBow(Mob parched) {
