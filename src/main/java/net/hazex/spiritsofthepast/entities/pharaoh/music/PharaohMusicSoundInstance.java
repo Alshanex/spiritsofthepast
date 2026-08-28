@@ -36,5 +36,7 @@ public class PharaohMusicSoundInstance extends AbstractTickableSoundInstance {
                 || this.pharaoh.level() != minecraft.level) {
             stop();
         }
+
+        minecraft.getMusicManager().stopPlaying();
     }
 }

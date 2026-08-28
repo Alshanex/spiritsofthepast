@@ -38,7 +38,7 @@ public class SotPEntityRegistry {
                             .noSummon()
                             .noSave()
                             .fireImmune()
-                            .clientTrackingRange(10)
+                            .clientTrackingRange(64)
                             .updateInterval(20)
             );
 
@@ -52,7 +52,7 @@ public class SotPEntityRegistry {
                             .noSummon()
                             .noSave()
                             .fireImmune()
-                            .clientTrackingRange(4)
+                            .clientTrackingRange(64)
                             .updateInterval(1)
             );
 
@@ -63,7 +63,7 @@ public class SotPEntityRegistry {
                     MobCategory.MONSTER,
                     builder -> builder
                             .sized(0.9f, 2.9f)
-                            .clientTrackingRange(16)
+                            .clientTrackingRange(64)
             );
 
     public static final Supplier<EntityType<FossilizedJavelinEntity>> FOSSILIZED_JAVELIN =
@@ -75,7 +75,7 @@ public class SotPEntityRegistry {
                             .sized(0.5f, 0.5f)
                             .noSummon()
                             .noSave()
-                            .clientTrackingRange(4)
+                            .clientTrackingRange(64)
                             .updateInterval(1)
             );
 
