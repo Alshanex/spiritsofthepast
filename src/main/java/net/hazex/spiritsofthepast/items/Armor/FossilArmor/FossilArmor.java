@@ -27,7 +27,7 @@ public class FossilArmor extends Item implements GeoItem {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
     public FossilArmor(Properties properties) {
-        super(new Item.Properties()
+        super(properties
                 .rarity(Rarity.RARE)
         );
     }

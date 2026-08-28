@@ -27,7 +27,7 @@ public class MedjayArmor extends Item implements GeoItem {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
     public MedjayArmor(Properties properties) {
-        super(new Properties()
+        super(properties
                 .rarity(Rarity.RARE)
         );
     }
