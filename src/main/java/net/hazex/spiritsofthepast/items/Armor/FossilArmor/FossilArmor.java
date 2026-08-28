@@ -36,7 +36,7 @@ public class FossilArmor extends Item implements GeoItem {
     private static final Map<ArmorMaterial, List<MobEffectInstance>> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, List<MobEffectInstance>>())
                     .put(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, List.of(
-                            new MobEffectInstance(SotPEffectRegistry.FOSSIL_SET_BONUS, 300, 3, false, false)))
+                            new MobEffectInstance(SotPEffectRegistry.FOSSIL_SET_BONUS, 300, 0, false, false)))
                     .build();
 
     public FossilArmor(Properties properties) {

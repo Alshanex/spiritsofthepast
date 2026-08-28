@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "A": "spiritsofthepast:amber",
+    "D": "minecraft:diamond_spear",
+    "F": "spiritsofthepast:fossil"
+  },
+  "pattern": [
+    " AF",
+    " FA",
+    "D  "
+  ],
+  "result": {
+    "id": "spiritsofthepast:amber_spear"
+  }
+}

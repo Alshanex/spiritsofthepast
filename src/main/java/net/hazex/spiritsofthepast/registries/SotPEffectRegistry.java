@@ -32,7 +32,7 @@ public class SotPEffectRegistry {
     );
 
     public static final Holder<MobEffect> FOSSIL_SET_BONUS = MOB_EFFECTS.register("fossil_set_bonus",
-            () -> new FossilSetBonusEffect(MobEffectCategory.HARMFUL, 11101546)
+            () -> new FossilSetBonusEffect(MobEffectCategory.BENEFICIAL, 11101546)
                     .addAttributeModifier(Attributes.MOVEMENT_SPEED,
                             Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "fossil_set_bonus"),
                             FossilSetBonusEffect.MOVEMENT_SPEED_PER_LEVEL,

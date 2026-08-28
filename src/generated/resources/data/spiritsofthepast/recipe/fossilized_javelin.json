@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "F": "spiritsofthepast:fossil",
+    "I": "minecraft:iron_spear"
+  },
+  "pattern": [
+    "  F",
+    " F ",
+    "I  "
+  ],
+  "result": {
+    "id": "spiritsofthepast:fossilized_javelin"
+  }
+}

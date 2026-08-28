@@ -116,7 +116,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         super(type, level);
         this.setPersistenceRequired();
 
-        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 1000;
+        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 600;
         this.abilityCooldowns[Ability.STORM.ordinal()] = 140;
         this.abilityCooldowns[Ability.BOLT.ordinal()] = 40;
         this.abilityCooldowns[Ability.SWEEP.ordinal()] = 60;
@@ -284,10 +284,6 @@ public class PharaohEntity extends Monster implements GeoEntity {
         level.sendParticles(ParticleTypes.POOF, x, this.getY() + 1.0, z, 16, 0.3, 0.5, 0.3, 0.02);
     }
 
-    public void applySpearHusk(Mob husk) {
-        husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SotPItemRegistry.MEDJAY_SPEAR.get()));
-    }
-
     protected SoundEvent getAmbientSound() {
         return SoundEvents.PARCHED_AMBIENT;
     }
@@ -310,12 +306,15 @@ public class PharaohEntity extends Monster implements GeoEntity {
         husk.setItemSlot(EquipmentSlot.HEAD, new ItemStack(SotPItemRegistry.MEDJAY_HELMET.asItem()));
     }
 
+    public void applySpearHusk(Mob husk) {
+        husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SotPItemRegistry.MEDJAY_SPEAR.get()));
+        husk.setItemSlot(EquipmentSlot.FEET, new ItemStack(SotPItemRegistry.MEDJAY_BOOTS.get()));
+    }
+
     public void applyKhopeshHusk(Mob husk) {
         husk.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SotPItemRegistry.KHOPESH.asItem()));
         husk.setItemSlot(EquipmentSlot.CHEST, new ItemStack(SotPItemRegistry.MEDJAY_CHESTPLATE.asItem()));
-        husk.setItemSlot(EquipmentSlot.HEAD, new ItemStack(SotPItemRegistry.MEDJAY_HELMET.asItem()));
         husk.setItemSlot(EquipmentSlot.LEGS, new ItemStack(SotPItemRegistry.MEDJAY_LEGGINGS.asItem()));
-        husk.setItemSlot(EquipmentSlot.FEET, new ItemStack(SotPItemRegistry.MEDJAY_BOOTS.asItem()));
     }
 
     public void applyParchedBow(Mob parched) {

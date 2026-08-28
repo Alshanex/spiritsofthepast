@@ -1,6 +1,6 @@
 package net.hazex.spiritsofthepast.items.Utils;
 
-import net.hazex.spiritsofthepast.datagen.SotPTags;
+import net.hazex.spiritsofthepast.datagen.Tags.SotPTags;
 import net.minecraft.world.item.ToolMaterial;
 
 public class SotPToolTiers {

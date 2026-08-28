@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "spiritsofthepast:block/pharaohs_tomb"
+    "model": "spiritsofthepast:item/pharaohs_tomb"
   }
 }

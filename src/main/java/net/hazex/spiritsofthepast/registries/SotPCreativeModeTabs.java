@@ -51,7 +51,7 @@ public class SotPCreativeModeTabs {
                     .title(Component.translatable("creativetab.spiritsofthepast.blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(SotPBlockRegistry.CRUMBLING_SANDSTONE_BRICK);
-                        output.accept(SotPBlockRegistry.PHARAOHS_TOMB);
+                        output.accept(SotPItemRegistry.PHARAOHS_TOMB_ITEM);
                         output.accept(SotPBlockRegistry.SANDSTONE_BRICK);
                         output.accept(SotPBlockRegistry.CRACKED_SANDSTONE_BRICK);
 

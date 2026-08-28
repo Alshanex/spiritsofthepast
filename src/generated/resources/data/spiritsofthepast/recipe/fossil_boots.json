@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "A": "spiritsofthepast:amber",
+    "D": "minecraft:diamond_boots",
+    "F": "spiritsofthepast:fossil",
+    "G": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "   ",
+    "GAG",
+    "FDF"
+  ],
+  "result": {
+    "id": "spiritsofthepast:fossil_boots"
+  }
+}

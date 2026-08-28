@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "A": "spiritsofthepast:amber",
+    "D": "minecraft:diamond_chestplate",
+    "F": "spiritsofthepast:fossil",
+    "L": "minecraft:leather"
+  },
+  "pattern": [
+    "F F",
+    "ADA",
+    "LFL"
+  ],
+  "result": {
+    "id": "spiritsofthepast:fossil_chestplate"
+  }
+}

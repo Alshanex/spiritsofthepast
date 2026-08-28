@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "A": "spiritsofthepast:amber",
+    "D": "minecraft:diamond_leggings",
+    "F": "spiritsofthepast:fossil",
+    "L": "minecraft:leather"
+  },
+  "pattern": [
+    "FDF",
+    "FAF",
+    "L L"
+  ],
+  "result": {
+    "id": "spiritsofthepast:fossil_leggings"
+  }
+}
