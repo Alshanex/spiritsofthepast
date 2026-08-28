@@ -139,8 +139,14 @@ public class SotPItemRegistry {
     public static final DeferredItem<BlockItem> PHARAOHS_TOMB_ITEM =
             ITEMS.registerSimpleBlockItem("pharaohs_tomb", SotPBlockRegistry.PHARAOHS_TOMB);
 
-    public static final DeferredItem<BlockItem> CRUMBLING_SANDSTONE_ITEM =
-            ITEMS.registerSimpleBlockItem("crumbling_sandstone", SotPBlockRegistry.CRUMBLING_SANDSTONE);
+    public static final DeferredItem<BlockItem> CRUMBLING_SANDSTONE_BRICK_ITEM =
+            ITEMS.registerSimpleBlockItem("crumbling_sandstone_brick", SotPBlockRegistry.CRUMBLING_SANDSTONE_BRICK);
+
+    public static final DeferredItem<BlockItem> CRACKED_SANDSTONE_BRICK_ITEM =
+            ITEMS.registerSimpleBlockItem("cracked_sandstone_brick", SotPBlockRegistry.CRACKED_SANDSTONE_BRICK);
+
+    public static final DeferredItem<BlockItem> SANDSTONE_BRICK_ITEM =
+            ITEMS.registerSimpleBlockItem("sandstone_brick", SotPBlockRegistry.SANDSTONE_BRICK);
 
     public static void register(IEventBus modEventBus){
         ITEMS.register(modEventBus);

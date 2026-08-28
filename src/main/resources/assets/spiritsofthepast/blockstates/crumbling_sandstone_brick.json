@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "cracked=false": {
+      "model": "spiritsofthepast:block/crumbling_sandstone_brick"
+    },
+    "cracked=true": {
+      "model": "spiritsofthepast:block/crumbling_sandstone_brick_cracked"
+    }
+  }
+}

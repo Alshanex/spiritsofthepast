@@ -11,7 +11,5 @@ import net.minecraft.resources.Identifier;
 public final class FossilArmorRenderer<R extends HumanoidRenderState & GeoRenderState> extends GeoArmorRenderer<FossilArmor, R> {
 	public FossilArmorRenderer() {
 		super(new DefaultedItemGeoModel<>(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "armor/fossil_armor")));
-
-		withRenderLayer(AutoGlowingGeoLayer::new);
 	}
 }

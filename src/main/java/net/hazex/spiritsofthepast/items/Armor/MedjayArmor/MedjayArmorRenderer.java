@@ -10,8 +10,6 @@ import net.minecraft.resources.Identifier;
 
 public final class MedjayArmorRenderer<R extends HumanoidRenderState & GeoRenderState> extends GeoArmorRenderer<MedjayArmor, R> {
 	public MedjayArmorRenderer() {
-		super(new DefaultedItemGeoModel<>(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "armor/fossil_armor")));
-
-		withRenderLayer(AutoGlowingGeoLayer::new);
+		super(new DefaultedItemGeoModel<>(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "armor/medjay_armor")));
 	}
 }

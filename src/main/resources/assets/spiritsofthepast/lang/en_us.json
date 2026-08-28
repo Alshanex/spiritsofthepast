@@ -6,7 +6,7 @@
   "item.spiritsofthepast.ankh_staff": "Ankh Staff",
   "item.spiritsofthepast.khopesh": "Khopesh",
   "item.spiritsofthepast.amber_spear": "Amber Spear",
-  "item.spiritsofthepast.javelin": "Javelin",
+  "item.spiritsofthepast.fossilized_javelin": "Fossilized Javelin",
   "item.spiritsofthepast.medjay_spear": "Medjay Spear",
 
   "item.spiritsofthepast.fossil_helmet": "Fossil Mask",
@@ -18,6 +18,20 @@
   "item.spiritsofthepast.medjay_chestplate": "Medjay Chestplate",
   "item.spiritsofthepast.medjay_leggings": "Medjay Skirt",
   "item.spiritsofthepast.medjay_boots": "Medjay Anklet Bracer",
+
+  "item.spiritsofthepast.sandstone_brick": "Sandstone Brick",
+  "block.spiritsofthepast.sandstone_brick": "Sandstone Brick",
+
+  "item.spiritsofthepast.cracked_sandstone_brick": "Cracked Sandstone Brick",
+  "block.spiritsofthepast.cracked_sandstone_brick": "Cracked Sandstone Brick",
+
+  "item.spiritsofthepast.crumbling_sandstone_brick": "Crumbling Sandstone Brick",
+  "block.spiritsofthepast.crumbling_sandstone_brick": "Crumbling Sandstone Brick",
+
+  "item.spiritsofthepast.pharaohs_tomb": "Pharaoh's Tomb",
+  "block.spiritsofthepast.pharaohs_tomb": "Pharaoh's Tomb",
+  "block.spiritsofthepast.pharaohs_tomb_part": "Pharaoh's Tomb",
+  "block.spiritsofthepast.pharaohs_tomb_empty": "Pharaoh's Tomb",
 
   "item.spiritsofthepast.disturbed_sands_music_disc": "Disturbed Sands Music Disc",
   "jukebox_song.spiritsofthepast.disturbed_sands": "Hazentouvel - Disturbed Sands (ARR)",
