@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
 import net.hazex.spiritsofthepast.registries.SotPBlockRegistry;
 import net.hazex.spiritsofthepast.registries.SotPEntityRegistry;
+import net.hazex.spiritsofthepast.registries.SotPItemRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -80,7 +81,7 @@ public class PharaohsTombBlock extends AbstractTombBlock {
             return InteractionResult.PASS;
         }
 
-        if (!stack.is(KEY_ITEM)) {
+        if (!stack.is(SotPItemRegistry.SCARAB)) {
             return InteractionResult.PASS;
         }
 

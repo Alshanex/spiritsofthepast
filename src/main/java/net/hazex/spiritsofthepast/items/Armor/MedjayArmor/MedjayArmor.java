@@ -28,7 +28,7 @@ public class MedjayArmor extends Item implements GeoItem {
 
     public MedjayArmor(Properties properties) {
         super(properties
-                .rarity(Rarity.RARE)
+                .rarity(Rarity.UNCOMMON)
         );
     }
 

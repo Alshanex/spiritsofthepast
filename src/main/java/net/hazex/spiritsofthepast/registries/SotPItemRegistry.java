@@ -19,6 +19,15 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class SotPItemRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SpiritsofthePast.MODID);
 
+
+    /*
+    *** Summon item
+     */
+
+    public static final DeferredItem<Item> SCARAB = ITEMS.registerItem(
+            "scarab",
+            Item::new);
+
     /*
     *** Materials
      */
@@ -84,16 +93,22 @@ public class SotPItemRegistry {
 
     public static final DeferredItem<Item> FOSSIL_HELMET = ITEMS.registerItem(
             "fossil_helmet",
-            properties -> new FossilArmor(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.HELMET)));
+            properties -> new FossilArmor(properties
+                    .humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.HELMET)
+            ));
+
     public static final DeferredItem<Item> FOSSIL_CHESTPLATE = ITEMS.registerItem(
             "fossil_chestplate",
-            properties -> new FossilArmor(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.CHESTPLATE)));
+            properties -> new FossilArmor(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.CHESTPLATE)
+            ));
     public static final DeferredItem<Item> FOSSIL_LEGGINGS = ITEMS.registerItem(
             "fossil_leggings",
-            properties -> new FossilArmor(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.LEGGINGS)));
+            properties -> new FossilArmor(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.LEGGINGS)
+            ));
     public static final DeferredItem<Item> FOSSIL_BOOTS = ITEMS.registerItem(
             "fossil_boots",
-            properties -> new FossilArmor(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.BOOTS)));
+            properties -> new FossilArmor(properties.humanoidArmor(SotPArmorMaterials.FOSSIL_ARMOR_MATERIAL, ArmorType.BOOTS)
+            ));
 
 
     public static final DeferredItem<Item> MEDJAY_HELMET = ITEMS.registerItem(

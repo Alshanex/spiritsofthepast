@@ -28,7 +28,7 @@ public class FossilArmor extends Item implements GeoItem {
 
     public FossilArmor(Properties properties) {
         super(properties
-                .rarity(Rarity.RARE)
+                .rarity(Rarity.UNCOMMON)
         );
     }
 

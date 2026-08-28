@@ -349,6 +349,10 @@ public class PharaohEntity extends Monster implements GeoEntity {
             return false;
         }
 
+        if (source.getDirectEntity() instanceof Projectile) {
+            amount *= 0.5F;
+        }
+
         float reduced = amount * (1.0F - damageReduction());
 
         if (reduced >= this.getHealth()) {
