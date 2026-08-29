@@ -12,7 +12,7 @@ public class PharaohMusicSoundInstance extends AbstractTickableSoundInstance {
     private final PharaohEntity pharaoh;
 
     public PharaohMusicSoundInstance(PharaohEntity pharaoh) {
-        super(SotPSoundRegistry.DISTURBED_SANDS.get(), SoundSource.MUSIC, RandomSource.create());
+        super(SotPSoundRegistry.DISTURBED_SANDS_LOOP.get(), SoundSource.MUSIC, RandomSource.create());
         this.pharaoh = pharaoh;
         this.looping = true;
         this.delay = 0;

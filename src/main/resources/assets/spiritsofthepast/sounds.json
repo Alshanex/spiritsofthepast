@@ -8,6 +8,15 @@
     ],
     "subtitle": "sounds.spiritsofthepast.disturbed_sands"
   },
+  "disturbed_sands_loop": {
+    "sounds": [
+      {
+        "name": "spiritsofthepast:disturbed_sands_loop",
+        "stream": true
+      }
+    ],
+    "subtitle": "sounds.spiritsofthepast.disturbed_sands_loop"
+  },
   "sandstone_impact": {
     "sounds": [
       "spiritsofthepast:sandstone_impact"

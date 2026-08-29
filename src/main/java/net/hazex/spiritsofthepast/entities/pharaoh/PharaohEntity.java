@@ -116,7 +116,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         super(type, level);
         this.setPersistenceRequired();
 
-        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 600;
+        this.abilityCooldowns[Ability.SUMMON.ordinal()] = 800;
         this.abilityCooldowns[Ability.STORM.ordinal()] = 140;
         this.abilityCooldowns[Ability.BOLT.ordinal()] = 40;
         this.abilityCooldowns[Ability.SWEEP.ordinal()] = 60;
@@ -167,7 +167,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 300.0)
+                .add(Attributes.MAX_HEALTH, 400.0)
                 .add(Attributes.ATTACK_DAMAGE, 9.0)
                 .add(Attributes.ARMOR, 8.0)
                 .add(Attributes.ARMOR_TOUGHNESS, 2.0)

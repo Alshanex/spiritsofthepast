@@ -46,7 +46,7 @@ public class SummonMinionsGoal extends Goal {
         this.spawned = false;
         this.pharaoh.startAction(PharaohEntity.ACTION_SUMMONING, CAST_TICKS);
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
-                SotPSoundRegistry.SUMMON_MINIONS.get(), SoundSource.HOSTILE, 0.75F, 1F);
+                SotPSoundRegistry.SUMMON_MINIONS.get(), SoundSource.HOSTILE, 0.4F, 1F);
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
                 SotPSoundRegistry.PHARAOH_SUMMON_1.get(), SoundSource.HOSTILE, 1.5F, 1F);
     }

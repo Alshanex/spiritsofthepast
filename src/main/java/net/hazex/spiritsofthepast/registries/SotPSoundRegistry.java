@@ -28,6 +28,7 @@ public class SotPSoundRegistry {
 
 
     public static final DeferredHolder<SoundEvent, SoundEvent> DISTURBED_SANDS = registerJukeboxSong("disturbed_sands");
+    public static final DeferredHolder<SoundEvent, SoundEvent> DISTURBED_SANDS_LOOP = registerJukeboxSong("disturbed_sands_loop");
     public static final ResourceKey<JukeboxSong> DISTURBED_SANDS_KEY = createSong("disturbed_sands");
 
 
