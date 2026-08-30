@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "spiritsofthepast:item/pharaohs_tomb"
+    "layer0": "spiritsofthepast:item/ankh_key"
   }
 }

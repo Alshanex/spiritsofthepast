@@ -20,8 +20,8 @@ public class CrumblingSandstoneBlock extends Block {
 
     public static final BooleanProperty CRACKED = BooleanProperty.create("cracked");
 
-    public static final int CRACK_DELAY_TICKS = 40;
-    public static final int COLLAPSE_DELAY_TICKS = 40;
+    public static final int CRACK_DELAY_TICKS = 10;
+    public static final int COLLAPSE_DELAY_TICKS = 10;
 
     public CrumblingSandstoneBlock(Properties properties) {
         super(properties);

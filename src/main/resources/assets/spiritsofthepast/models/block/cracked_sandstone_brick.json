@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "spiritsofthepast:block/cracked_sandstone_top",
+    "top": "minecraft:block/sandstone_top",
     "bottom": "minecraft:block/sandstone_bottom",
     "side": "spiritsofthepast:block/cracked_sandstone_brick"
   }

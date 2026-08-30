@@ -29,6 +29,20 @@ public class SotPItemRegistry {
             Item::new);
 
     /*
+    *** Keys
+     */
+
+    public static final DeferredItem<Item> ANKH_KEY = ITEMS.registerItem("ankh_key",
+            properties -> new Item(properties
+                    .rarity(Rarity.RARE)
+            ));
+
+    public static final DeferredItem<Item> PYRAMID_KEY = ITEMS.registerItem("pyramid_key",
+            properties -> new Item(properties
+                    .rarity(Rarity.UNCOMMON)
+            ));
+
+    /*
     *** Materials
      */
 
