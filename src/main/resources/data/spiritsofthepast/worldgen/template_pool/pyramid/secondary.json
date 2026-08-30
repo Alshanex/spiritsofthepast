@@ -1,0 +1,68 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/empty_room",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/small_room",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/mob_room",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/empty_tomb",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/treasure_room",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/passage",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/passage_trap",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

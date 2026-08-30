@@ -1,0 +1,68 @@
+{
+  "fallback": "spiritsofthepast:pyramid/primary_fallback",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/boss_room",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/corridor/long",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/corridor/medium",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/corridor/short",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/corridor/loot",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/corridor/cross",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/corridor/t_junction",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    }
+  ]
+}
