@@ -1,0 +1,32 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/passage",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/passage_trap",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/secondary/stairwell",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

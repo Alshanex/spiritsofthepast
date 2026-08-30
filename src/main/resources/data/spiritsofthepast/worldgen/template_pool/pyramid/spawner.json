@@ -1,0 +1,49 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/spawner/none",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/spawner/cave_spider",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/spawner/husk",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/spawner/parched",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      }
+    }
+  ]
+}

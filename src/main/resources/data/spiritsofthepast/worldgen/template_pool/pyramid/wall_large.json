@@ -1,0 +1,23 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/wall/large",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/wall/large_vault",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
+    }
+  ]
+}
