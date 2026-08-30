@@ -13,6 +13,8 @@ public class SotPTags {
     public static class Blocks {
         public static final TagKey<Block> INCORRECT_FOR_FOSSIL_TOOL = createTag("incorrect_for_fossil_tool");
         public static final TagKey<Block> INCORRECT_FOR_MEDJAY_TOOL = createTag("incorrect_for_medjay_tool");
+        public static final TagKey<Block> NEEDS_FOSSIL_TOOL = createTag("incorrect_for_fossil_tool");
+        public static final TagKey<Block> NEEDS_MEDJAY_TOOL = createTag("incorrect_for_medjay_tool");
 
 
         private static TagKey<Block> createTag(String name) {

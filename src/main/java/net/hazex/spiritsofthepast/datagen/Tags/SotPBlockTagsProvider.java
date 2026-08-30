@@ -22,5 +22,12 @@ public class SotPBlockTagsProvider extends BlockTagsProvider {
                 .add(SotPBlockRegistry.CRUMBLING_SANDSTONE_BRICK.get())
 
              ;
+
+
+        tag(SotPTags.Blocks.NEEDS_FOSSIL_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
+        tag(SotPTags.Blocks.INCORRECT_FOR_FOSSIL_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+                .remove(SotPTags.Blocks.NEEDS_FOSSIL_TOOL);
     }
 }
