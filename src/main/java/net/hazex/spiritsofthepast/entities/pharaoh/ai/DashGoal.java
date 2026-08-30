@@ -77,7 +77,7 @@ public class DashGoal extends Goal {
 
         this.pharaoh.startAction(PharaohEntity.ACTION_DASH_PREPARE, -1);
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
-                SoundEvents.RAVAGER_ROAR, SoundSource.HOSTILE, 1.0F, 1.4F);
+                SoundEvents.BREEZE_INHALE, SoundSource.HOSTILE, 1.0F, 1.4F);
     }
 
     private Vec3 travelDirection() {

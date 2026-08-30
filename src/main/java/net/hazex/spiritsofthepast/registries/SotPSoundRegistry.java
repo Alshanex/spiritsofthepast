@@ -23,11 +23,24 @@ public class SotPSoundRegistry {
     public static final Supplier<SoundEvent> SUMMON_MINIONS = SOUND_EVENTS.register("summon_minions",
             () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "summon_minions")));
 
-    public static final Supplier<SoundEvent> PHARAOH_SUMMON_1 = SOUND_EVENTS.register("pharaoh_summon_1",
-            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_summon_1")));
+    public static final Supplier<SoundEvent> PHARAOH_SUMMON = SOUND_EVENTS.register("pharaoh_summon",
+            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_summon")));
+    public static final Supplier<SoundEvent> PHARAOH_DEATH = SOUND_EVENTS.register("pharaoh_death",
+            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_death")));
+    public static final Supplier<SoundEvent> PHARAOH_FIREBALL = SOUND_EVENTS.register("pharaoh_fireball",
+            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_fireball")));
+    public static final Supplier<SoundEvent> PHARAOH_SPAWN = SOUND_EVENTS.register("pharaoh_spawn",
+            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_spawn")));
+    public static final Supplier<SoundEvent> PHARAOH_SWING = SOUND_EVENTS.register("pharaoh_swing",
+            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_swing")));
+    public static final Supplier<SoundEvent> PHARAOH_HEAL = SOUND_EVENTS.register("pharaoh_heal",
+            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_heal")));
+    public static final Supplier<SoundEvent> PHARAOH_SANDSTORM = SOUND_EVENTS.register("pharaoh_sandstorm",
+            () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "pharaoh_sandstorm")));
 
 
     public static final DeferredHolder<SoundEvent, SoundEvent> DISTURBED_SANDS = registerJukeboxSong("disturbed_sands");
+    public static final DeferredHolder<SoundEvent, SoundEvent> DISTURBED_SANDS_END = registerJukeboxSong("disturbed_sands_end");
     public static final DeferredHolder<SoundEvent, SoundEvent> DISTURBED_SANDS_LOOP = registerJukeboxSong("disturbed_sands_loop");
     public static final ResourceKey<JukeboxSong> DISTURBED_SANDS_KEY = createSong("disturbed_sands");
 

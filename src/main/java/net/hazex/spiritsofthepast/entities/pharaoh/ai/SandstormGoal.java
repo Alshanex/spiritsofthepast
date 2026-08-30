@@ -2,6 +2,7 @@ package net.hazex.spiritsofthepast.entities.pharaoh.ai;
 
 import net.hazex.spiritsofthepast.entities.sandstone.SandfallEmitterEntity;
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
+import net.hazex.spiritsofthepast.registries.SotPSoundRegistry;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -62,7 +63,9 @@ public class SandstormGoal extends Goal {
 
         this.pharaoh.startAction(PharaohEntity.ACTION_CASTING, -1);
         level.playSound(null, this.pharaoh.blockPosition(),
-                SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.HOSTILE, 2.0F, 1.2F);
+                SotPSoundRegistry.PHARAOH_SANDSTORM.get(), SoundSource.HOSTILE, 1.0F, 1.2F);
+        level.playSound(null, this.pharaoh.blockPosition(),
+                SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.HOSTILE, 1.5F, 1.2F);
     }
 
     @Override

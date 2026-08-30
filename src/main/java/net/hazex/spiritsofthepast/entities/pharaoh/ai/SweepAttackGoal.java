@@ -1,6 +1,7 @@
 package net.hazex.spiritsofthepast.entities.pharaoh.ai;
 
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
+import net.hazex.spiritsofthepast.registries.SotPSoundRegistry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -60,7 +61,7 @@ public class SweepAttackGoal extends Goal {
         if (!this.soundPlayed && this.elapsed >= SOUND_TICK) {
             this.soundPlayed = true;
             this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
-                    SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.HOSTILE, 1.4F, 0.7F);
+                    SotPSoundRegistry.PHARAOH_SWING.get(), SoundSource.HOSTILE, 1.4F, 0.7F);
         }
 
         if (this.swept || this.elapsed < IMPACT_TICK) {

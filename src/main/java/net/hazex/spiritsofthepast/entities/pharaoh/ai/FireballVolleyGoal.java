@@ -1,6 +1,7 @@
 package net.hazex.spiritsofthepast.entities.pharaoh.ai;
 
 import net.hazex.spiritsofthepast.entities.pharaoh.PharaohEntity;
+import net.hazex.spiritsofthepast.registries.SotPSoundRegistry;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -82,6 +83,8 @@ public class FireballVolleyGoal extends Goal {
             this.pharaoh.level().addFreshEntity(fireball);
         }
 
+        this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
+                SotPSoundRegistry.PHARAOH_FIREBALL.get(), SoundSource.HOSTILE, 1.5F, 0.7F);
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
                 SoundEvents.BLAZE_SHOOT, SoundSource.HOSTILE, 1.5F, 0.7F);
     }

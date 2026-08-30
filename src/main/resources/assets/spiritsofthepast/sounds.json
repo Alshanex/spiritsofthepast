@@ -29,9 +29,53 @@
     ],
     "subtitle": "sounds.spiritsofthepast.summon_minions"
   },
-  "pharaoh_summon_1": {
+  "pharaoh_summon": {
     "sounds": [
-      "spiritsofthepast:pharaoh_summon_1"
+      "spiritsofthepast:pharaoh_summon_1",
+      "spiritsofthepast:pharaoh_summon_2",
+      "spiritsofthepast:pharaoh_summon_3",
+      "spiritsofthepast:pharaoh_summon_4"
+    ]
+  },
+  "pharaoh_fireball": {
+    "sounds": [
+      "spiritsofthepast:pharaoh_fireball_1",
+      "spiritsofthepast:pharaoh_fireball_2"
+    ]
+  },
+  "pharaoh_heal": {
+    "sounds": [
+      "spiritsofthepast:pharaoh_heal"
+    ]
+  },
+  "pharaoh_swing": {
+    "sounds": [
+      "spiritsofthepast:pharaoh_swing"
+    ]
+  },
+  "pharaoh_sandstorm": {
+    "sounds": [
+      "spiritsofthepast:pharaoh_sandstorm_1",
+      "spiritsofthepast:pharaoh_sandstorm_2",
+      "spiritsofthepast:pharaoh_sandstorm_3",
+      "spiritsofthepast:pharaoh_sandstorm_4",
+      "spiritsofthepast:pharaoh_sandstorm_5",
+      "spiritsofthepast:pharaoh_sandstorm_6"
+    ]
+  },
+  "pharaoh_spawn": {
+    "sounds": [
+      "spiritsofthepast:pharaoh_spawn_1",
+      "spiritsofthepast:pharaoh_spawn_2",
+      "spiritsofthepast:pharaoh_spawn_3"
+    ]
+  },
+  "pharaoh_death": {
+    "sounds": [
+      "spiritsofthepast:pharaoh_summon_1",
+      "spiritsofthepast:pharaoh_summon_2",
+      "spiritsofthepast:pharaoh_summon_3",
+      "spiritsofthepast:pharaoh_summon_4"
     ]
   }
 }

@@ -9,6 +9,7 @@ import com.geckolib.animation.object.PlayState;
 import com.geckolib.util.GeckoLibUtil;
 import net.hazex.spiritsofthepast.entities.pharaoh.ai.*;
 import net.hazex.spiritsofthepast.registries.SotPItemRegistry;
+import net.hazex.spiritsofthepast.registries.SotPSoundRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -20,6 +21,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -320,7 +322,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.PARCHED_DEATH;
+        return SotPSoundRegistry.PHARAOH_DEATH.get();
     }
 
     protected void playStepSound(BlockPos pPos, BlockState pState) {
@@ -369,6 +371,15 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
     public boolean isDying() {
         return this.entityData.get(DATA_DYING);
+    }
+
+    @Override
+    public void onAddedToLevel() {
+        super.onAddedToLevel();
+
+        if (!this.level().isClientSide()) {
+            this.playSound(SotPSoundRegistry.PHARAOH_SPAWN.get(), 1.0F, 1.0F);
+        }
     }
 
     @Override
@@ -422,6 +433,10 @@ public class PharaohEntity extends Monster implements GeoEntity {
             this.setInvulnerable(false);
             this.setHealth(0.0F);
             this.die(this.deathCause == null ? this.damageSources().generic() : this.deathCause);
+            this.playSound(
+                    SotPSoundRegistry.DISTURBED_SANDS_END.get(), 1.0F, 1.0F);
+            this.playSound(
+                    SotPSoundRegistry.PHARAOH_DEATH.get(), 1.0F, 1.0F);
         }
 
         this.bossEvent.removeAllPlayers();
