@@ -33,6 +33,7 @@ public class PharaohMusicSoundInstance extends AbstractTickableSoundInstance {
         if (minecraft.level == null
                 || this.pharaoh.isRemoved()
                 || !this.pharaoh.isAlive()
+                || this.pharaoh.isDying()
                 || this.pharaoh.level() != minecraft.level) {
             stop();
         }

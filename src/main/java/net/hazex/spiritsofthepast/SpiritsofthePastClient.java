@@ -1,6 +1,7 @@
 package net.hazex.spiritsofthepast;
 
 import com.geckolib.renderer.GeoBlockRenderer;
+import net.hazex.spiritsofthepast.blocks.tomb.TombRenderer;
 import net.hazex.spiritsofthepast.entities.javelin.FossilizedJavelinRenderer;
 import net.hazex.spiritsofthepast.entities.sandstone.SandShardRenderer;
 import net.hazex.spiritsofthepast.entities.sandstone.SandstoneBoltRenderer;
@@ -47,11 +48,11 @@ public class SpiritsofthePastClient {
 
         event.registerBlockEntityRenderer(
                 SotPBlockEntityRegistry.PHARAOHS_TOMB_BE.get(),
-                context -> new GeoBlockRenderer<>(context, SotPBlockEntityRegistry.PHARAOHS_TOMB_BE.get()));
+                context -> new TombRenderer<>(context, SotPBlockEntityRegistry.PHARAOHS_TOMB_BE.get()));
 
         event.registerBlockEntityRenderer(
                 SotPBlockEntityRegistry.EMPTY_TOMB_BE.get(),
-                context -> new GeoBlockRenderer<>(context, SotPBlockEntityRegistry.EMPTY_TOMB_BE.get()));
+                context -> new TombRenderer<>(context, SotPBlockEntityRegistry.EMPTY_TOMB_BE.get()));
     }
 
     @SubscribeEvent

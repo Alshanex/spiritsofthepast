@@ -62,6 +62,11 @@ public class PharaohEntity extends Monster implements GeoEntity {
     public static final int ACTION_INSTANT_CAST = 3;
     public static final int ACTION_SPAWNING = 4;
     public static final int ACTION_SWEEP = 5;
+    public static final int ACTION_SLAM = 6;
+    public static final int ACTION_DASH_PREPARE = 7;
+    public static final int ACTION_DASHING = 8;
+    public static final int ACTION_DASH_LAND = 9;
+    public static final int ACTION_FIREBALL = 10;
 
     private static final EntityDataAccessor<Integer> DATA_ACTION = SynchedEntityData.defineId(PharaohEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_DYING = SynchedEntityData.defineId(PharaohEntity.class, EntityDataSerializers.BOOLEAN);
@@ -76,11 +81,19 @@ public class PharaohEntity extends Monster implements GeoEntity {
     private static final RawAnimation DEATH = RawAnimation.begin().thenPlayAndHold("death");
     private static final RawAnimation SPAWN = RawAnimation.begin().thenPlay("spawn");
     private static final RawAnimation SWEEP = RawAnimation.begin().thenPlay("sweep");
+    private static final RawAnimation SLAM = RawAnimation.begin().thenPlay("slam");
+    private static final RawAnimation DASH_PREPARE = RawAnimation.begin().thenPlay("dash_prepare");
+    private static final RawAnimation DASHING_LOOP = RawAnimation.begin().thenLoop("dashing_loop");
+    private static final RawAnimation DASH_LAND = RawAnimation.begin().thenPlay("dash_land");
 
     private static final int SWING_DURATION = 8;
     private static final int DEATH_DURATION = 65;
     private static final int SPAWN_DURATION = 45;
     public static final int SWEEP_DURATION = 10;
+    public static final int SLAM_DURATION = 23;
+    public static final int DASH_PREPARE_DURATION = 5;
+    public static final int DASH_LAND_DURATION = 20;
+    public static final int FIREBALL_DURATION = 8;
 
     private static final float REDUCTION_PER_MINION = 0.10F;
     private static final float MAX_REDUCTION = 0.50F;
@@ -97,7 +110,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
             BossEvent.BossBarColor.YELLOW,
             BossEvent.BossBarOverlay.PROGRESS);
 
-    public enum Ability { SUMMON, STORM, BOLT, SWEEP }
+    public enum Ability { SUMMON, STORM, BOLT, SWEEP, SLAM, DASH, FIREBALL }
 
     private static final int GLOBAL_ABILITY_GAP = 60;
 
@@ -120,6 +133,9 @@ public class PharaohEntity extends Monster implements GeoEntity {
         this.abilityCooldowns[Ability.STORM.ordinal()] = 140;
         this.abilityCooldowns[Ability.BOLT.ordinal()] = 40;
         this.abilityCooldowns[Ability.SWEEP.ordinal()] = 60;
+        this.abilityCooldowns[Ability.SLAM.ordinal()] = 100;
+        this.abilityCooldowns[Ability.DASH.ordinal()] = 80;
+        this.abilityCooldowns[Ability.FIREBALL.ordinal()] = 120;
     }
 
     public boolean abilityReady(Ability ability) {
@@ -180,10 +196,13 @@ public class PharaohEntity extends Monster implements GeoEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new SweepAttackGoal(this));
-        this.goalSelector.addGoal(2, new SummonMinionsGoal(this));
-        this.goalSelector.addGoal(3, new SandstormGoal(this));
-        this.goalSelector.addGoal(4, new SandBoltGoal(this));
-        this.goalSelector.addGoal(5, new PharaohMeleeGoal(this, 1.0, true));
+        this.goalSelector.addGoal(2, new DashGoal(this));
+        this.goalSelector.addGoal(3, new SlamAttackGoal(this));
+        this.goalSelector.addGoal(4, new SummonMinionsGoal(this));
+        this.goalSelector.addGoal(5, new SandstormGoal(this));
+        this.goalSelector.addGoal(6, new FireballVolleyGoal(this));
+        this.goalSelector.addGoal(7, new SandBoltGoal(this));
+        this.goalSelector.addGoal(8, new PharaohMeleeGoal(this, 1.0, true));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.8) {
             @Override
             public boolean canUse() {
@@ -225,6 +244,14 @@ public class PharaohEntity extends Monster implements GeoEntity {
 
     public boolean isSpawning() {
         return getAction() == ACTION_SPAWNING;
+    }
+
+    public boolean isDashing() {
+        return getAction() == ACTION_DASHING;
+    }
+
+    public boolean isCornered() {
+        return this.getHealth() / this.getMaxHealth() <= 0.25F;
     }
 
     // Minions
@@ -440,7 +467,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
             releaseAction();
         }
 
-        if (isBusy()) {
+        if (isBusy() && !isDashing()) {
             this.getNavigation().stop();
             this.setDeltaMovement(0.0, this.getDeltaMovement().y, 0.0);
         }
@@ -530,6 +557,18 @@ public class PharaohEntity extends Monster implements GeoEntity {
             if (action == ACTION_SWEEP) {
                 return test.setAndContinue(SWEEP);
             }
+            if (action == ACTION_SLAM) {
+                return test.setAndContinue(SLAM);
+            }
+            if (action == ACTION_DASH_PREPARE) {
+                return test.setAndContinue(DASH_PREPARE);
+            }
+            if (action == ACTION_DASHING) {
+                return test.setAndContinue(DASHING_LOOP);
+            }
+            if (action == ACTION_DASH_LAND) {
+                return test.setAndContinue(DASH_LAND);
+            }
             if (action == ACTION_SUMMONING) {
                 return test.setAndContinue(SUMMONING);
             }
@@ -543,11 +582,20 @@ public class PharaohEntity extends Monster implements GeoEntity {
         }));
 
         controllers.add(new AnimationController<>("arms", 3, test -> {
-            if (isSpawning() || isDying() || getAction() == ACTION_SWEEP) {
+            int action = getAction();
+            if (isSpawning() || isDying()
+                    || action == ACTION_SWEEP
+                    || action == ACTION_SLAM
+                    || action == ACTION_DASH_PREPARE
+                    || action == ACTION_DASHING
+                    || action == ACTION_DASH_LAND) {
                 return PlayState.STOP;
             }
-            if (getAction() == ACTION_INSTANT_CAST) {
+            if (action == ACTION_INSTANT_CAST) {
                 return test.setAndContinue(INSTANT_CAST);
+            }
+            if (action == ACTION_FIREBALL) {
+                return test.setAndContinue(SWING);
             }
             if (this.swinging) {
                 return test.setAndContinue(SWING);
