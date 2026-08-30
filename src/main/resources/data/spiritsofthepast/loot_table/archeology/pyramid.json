@@ -34,7 +34,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:gold"
+          "name": "minecraft:gold_ingot"
         },
         {
           "type": "minecraft:item",

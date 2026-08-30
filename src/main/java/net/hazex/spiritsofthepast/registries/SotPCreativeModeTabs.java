@@ -42,6 +42,8 @@ public class SotPCreativeModeTabs {
                         // Misc
                         output.accept(SotPItemRegistry.DISTURBED_SANDS_MUSIC_DISC);
                         output.accept(SotPItemRegistry.SCARAB);
+                        output.accept(SotPItemRegistry.PYRAMID_KEY);
+                        output.accept(SotPItemRegistry.ANKH_KEY);
 
 
                     }).build());
