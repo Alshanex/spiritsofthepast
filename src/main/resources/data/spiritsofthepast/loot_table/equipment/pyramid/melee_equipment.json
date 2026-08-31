@@ -1,0 +1,74 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "spiritsofthepast:equipment/pyramid/generic_equipment"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_sword",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:sharpness": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ],
+          "name": "minecraft:golden_sword"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "spiritsofthepast:khopesh"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "spiritsofthepast:medjay_spear"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:sharpness": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ],
+          "name": "spiritsofthepast:khopesh"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:sharpness": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ],
+          "name": "spiritsofthepast:medjay_spear"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "spiritsofthepast:equipment/melee_equipment"
+}

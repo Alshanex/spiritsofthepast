@@ -37,7 +37,23 @@ public class SotPRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, SotPBlockRegistry.CRACKED_SANDSTONE_BRICK.get().asItem(), Items.SANDSTONE);
 
         /*
-        *** Weapons
+        *** Misc
+         */
+
+        shaped(RecipeCategory.COMBAT, SotPItemRegistry.SCARAB.get())
+                .pattern("GFG")
+                .pattern("GDG")
+                .pattern("EGE")
+                .define('F', SotPItemRegistry.FOSSIL.get())
+                .define('G', Items.GOLD_INGOT)
+                .define('D', Items.DIAMOND)
+                .define('E', Items.EMERALD)
+                .unlockedBy(getHasName(SotPItemRegistry.FOSSIL.get()), has(SotPItemRegistry.FOSSIL))
+                .group("fossil")
+                .save(output);
+
+        /*
+        *** weapons
          */
 
         shaped(RecipeCategory.COMBAT, SotPItemRegistry.FOSSILIZED_JAVELIN.get())

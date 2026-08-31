@@ -61,7 +61,7 @@ public class SweepAttackGoal extends Goal {
         if (!this.soundPlayed && this.elapsed >= SOUND_TICK) {
             this.soundPlayed = true;
             this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
-                    SotPSoundRegistry.PHARAOH_SWING.get(), SoundSource.HOSTILE, 1.4F, 0.7F);
+                    SotPSoundRegistry.PHARAOH_SWING.get(), SoundSource.HOSTILE, 2.5F, 1F);
         }
 
         if (this.swept || this.elapsed < IMPACT_TICK) {

@@ -40,7 +40,7 @@ authors="Hazen, Alshanex"
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Example mod description.
+Spirits of the Past is a mod that aims to add in ancient bosses. Made for the 2026 Modjam.
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.

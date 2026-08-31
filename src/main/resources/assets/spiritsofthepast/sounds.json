@@ -8,6 +8,15 @@
     ],
     "subtitle": "sounds.spiritsofthepast.disturbed_sands"
   },
+  "disturbed_sands_end": {
+    "sounds": [
+      {
+        "name": "spiritsofthepast:disturbed_sands_end",
+        "stream": true
+      }
+    ],
+    "subtitle": "sounds.spiritsofthepast.disturbed_sands"
+  },
   "disturbed_sands_loop": {
     "sounds": [
       {
@@ -50,7 +59,7 @@
   },
   "pharaoh_swing": {
     "sounds": [
-      "spiritsofthepast:pharaoh_swing"
+      "spiritsofthepast:pharaoh_swing_1"
     ]
   },
   "pharaoh_sandstorm": {

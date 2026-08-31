@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "D": "minecraft:diamond",
+    "E": "minecraft:emerald",
+    "F": "spiritsofthepast:fossil",
+    "G": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "GFG",
+    "GDG",
+    "EGE"
+  ],
+  "result": {
+    "id": "spiritsofthepast:scarab"
+  }
+}

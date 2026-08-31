@@ -86,7 +86,7 @@ public class FireballVolleyGoal extends Goal {
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
                 SotPSoundRegistry.PHARAOH_FIREBALL.get(), SoundSource.HOSTILE, 1.5F, 0.7F);
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
-                SoundEvents.BLAZE_SHOOT, SoundSource.HOSTILE, 1.5F, 0.7F);
+                SoundEvents.BLAZE_SHOOT, SoundSource.HOSTILE, 2.5F, 1F);
     }
 
     private static Vec3 rotateAroundY(Vec3 vec, double radians) {

@@ -1,0 +1,66 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "spiritsofthepast:equipment/pyramid/generic_equipment"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:power": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ],
+          "name": "minecraft:bow"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:punch": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ],
+          "name": "minecraft:bow"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "enchantments": {
+                "minecraft:flame": 1.0
+              },
+              "function": "minecraft:set_enchantments"
+            }
+          ],
+          "name": "minecraft:bow"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "spiritsofthepast:equipment/range_equipment"
+}

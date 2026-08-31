@@ -1,0 +1,76 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "spiritsofthepast:medjay_helmet",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_protection": 4.0,
+                "minecraft:projectile_protection": 4.0,
+                "minecraft:protection": 4.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "spiritsofthepast:medjay_chestplate",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_protection": 4.0,
+                "minecraft:projectile_protection": 4.0,
+                "minecraft:protection": 4.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "spiritsofthepast:medjay_leggings",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_protection": 4.0,
+                "minecraft:projectile_protection": 4.0,
+                "minecraft:protection": 4.0
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "spiritsofthepast:medjay_boots",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_protection": 4.0,
+                "minecraft:projectile_protection": 4.0,
+                "minecraft:protection": 4.0
+              },
+              "add": false
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "spiritsofthepast:equipment/pyramid/generic_equipment"
+}

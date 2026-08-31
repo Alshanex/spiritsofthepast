@@ -92,7 +92,7 @@ public class SlamAttackGoal extends Goal {
                         Blocks.SANDSTONE.defaultBlockState()),
                 centre.x, centre.y + 0.2, centre.z, 60, RADIUS * 0.5, 0.1, RADIUS * 0.5, 0.25);
         level.playSound(null, this.pharaoh.blockPosition(),
-                SoundEvents.MACE_SMASH_GROUND, SoundSource.HOSTILE, 1.2F, 0.6F);
+                SoundEvents.MACE_SMASH_GROUND, SoundSource.HOSTILE, 1.2F, 0.9F);
     }
 
     @Override
