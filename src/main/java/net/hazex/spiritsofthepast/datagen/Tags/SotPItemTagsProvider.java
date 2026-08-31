@@ -42,10 +42,27 @@ public class SotPItemTagsProvider extends ItemTagsProvider {
                         )
         ;
 
-        tag(ItemTags.SPEARS)
+        tag(ItemTags.PICKAXES)
                 .add(
-                        SotPItemRegistry.AMBER_SPEAR.get(),
-                        SotPItemRegistry.MEDJAY_SPEAR.get()
+                        SotPItemRegistry.AMBER_PICKAXE.get()
+                        )
+        ;
+
+        tag(ItemTags.AXES)
+                .add(
+                        SotPItemRegistry.AMBER_AXE.get()
+                        )
+        ;
+
+        tag(ItemTags.SHOVELS)
+                .add(
+                        SotPItemRegistry.AMBER_SHOVEL.get()
+                        )
+        ;
+
+        tag(ItemTags.HOES)
+                .add(
+                        SotPItemRegistry.AMBER_SICKLE.get()
                         )
         ;
 

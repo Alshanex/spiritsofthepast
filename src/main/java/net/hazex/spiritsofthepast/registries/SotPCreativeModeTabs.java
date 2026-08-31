@@ -23,8 +23,13 @@ public class SotPCreativeModeTabs {
                     .withTabsAfter(Identifier.fromNamespaceAndPath(SpiritsofthePast.MODID, "spiritsofthepast_blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
 
-                        // Weapons
+                        // Equipment
                         output.accept(SotPItemRegistry.AMBER_SPEAR);
+                        output.accept(SotPItemRegistry.AMBER_PICKAXE);
+                        output.accept(SotPItemRegistry.AMBER_SHOVEL);
+                        output.accept(SotPItemRegistry.AMBER_AXE);
+                        output.accept(SotPItemRegistry.AMBER_SICKLE);
+
                         output.accept(SotPItemRegistry.ANKH_STAFF);
                         output.accept(SotPItemRegistry.KHOPESH);
                         output.accept(SotPItemRegistry.FOSSILIZED_JAVELIN);

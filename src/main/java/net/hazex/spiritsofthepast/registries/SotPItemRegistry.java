@@ -8,9 +8,7 @@ import net.hazex.spiritsofthepast.items.Weapons.AnkhStaffItem;
 import net.hazex.spiritsofthepast.items.Utils.SotPArmorMaterials;
 import net.hazex.spiritsofthepast.items.Utils.SotPToolTiers;
 import net.hazex.spiritsofthepast.items.Weapons.FossilizedJavelinItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -55,7 +53,7 @@ public class SotPItemRegistry {
             Item::new);
 
     /*
-    *** Weapons
+    *** Equipment
      */
 
     public static final DeferredItem<Item> ANKH_STAFF = ITEMS.registerItem(
@@ -76,6 +74,16 @@ public class SotPItemRegistry {
                     4.67f)
             ));
 
+    public static final DeferredItem<Item> AMBER_PICKAXE = ITEMS.registerItem("amber_pickaxe",
+            properties -> new Item(properties.pickaxe(SotPToolTiers.FOSSIL, 1f, -2.8f)));
+    public static final DeferredItem<Item> AMBER_SHOVEL = ITEMS.registerItem("amber_shovel",
+            properties -> new ShovelItem(SotPToolTiers.FOSSIL, 1.5f, -2.8f, properties));
+    public static final DeferredItem<Item> AMBER_AXE = ITEMS.registerItem("amber_axe",
+            properties -> new AxeItem(SotPToolTiers.FOSSIL, 6f, -3.0f, properties));
+    public static final DeferredItem<Item> AMBER_SICKLE = ITEMS.registerItem("amber_sickle",
+            properties -> new HoeItem(SotPToolTiers.FOSSIL, 2f, -2.5f, properties));
+
+
     public static final DeferredItem<Item> KHOPESH = ITEMS.registerItem("khopesh",
             properties -> new Item(properties.sword(SotPToolTiers.FOSSIL,
                     6,
@@ -91,14 +99,22 @@ public class SotPItemRegistry {
                     13f,
                     8.5f,
                     5.1f,
-                    13.37f,
-                    4.67f)
+                    15.37f,
+                    5.5f)
             ));
 
 
     public static final DeferredItem<Item> FOSSILIZED_JAVELIN = ITEMS.registerItem("fossilized_javelin",
             properties -> new FossilizedJavelinItem(properties.spear(SotPToolTiers.FOSSIL,
-                    0.95f, 0.7f, 0.7f, 3.5f, 13f, 8.5f, 5.1f, 13.37f, 4.67f)
+                    0.95f,
+                    0.7f,
+                    0.7f,
+                    3.5f,
+                    13f,
+                    8.5f,
+                    5.1f,
+                    13.37f,
+                    7f)
             ));
 
     /*
