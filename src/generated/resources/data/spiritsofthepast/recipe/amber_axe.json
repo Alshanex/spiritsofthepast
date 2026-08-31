@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "A": "spiritsofthepast:amber",
+    "D": "minecraft:diamond_axe",
+    "F": "spiritsofthepast:fossil",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "FF ",
+    "FDA",
+    "S  "
+  ],
+  "result": {
+    "id": "spiritsofthepast:amber_axe"
+  }
+}

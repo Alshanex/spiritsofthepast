@@ -6,12 +6,13 @@
     "D": "minecraft:diamond",
     "E": "minecraft:emerald",
     "F": "spiritsofthepast:fossil",
-    "G": "minecraft:gold_ingot"
+    "G": "minecraft:gold_ingot",
+    "T": "minecraft:totem_of_undying"
   },
   "pattern": [
     "GFG",
     "GDG",
-    "EGE"
+    "ETE"
   ],
   "result": {
     "id": "spiritsofthepast:scarab"

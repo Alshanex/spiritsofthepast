@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "A": "spiritsofthepast:amber",
+    "D": "minecraft:diamond_hoe",
+    "F": "spiritsofthepast:fossil",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " FF",
+    "ADF",
+    "SA "
+  ],
+  "result": {
+    "id": "spiritsofthepast:amber_sickle"
+  }
+}

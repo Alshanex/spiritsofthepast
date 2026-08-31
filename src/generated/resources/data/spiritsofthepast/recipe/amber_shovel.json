@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fossil",
+  "key": {
+    "A": "spiritsofthepast:amber",
+    "D": "minecraft:diamond_shovel",
+    "F": "spiritsofthepast:fossil",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " F ",
+    " D ",
+    "ASA"
+  ],
+  "result": {
+    "id": "spiritsofthepast:amber_shovel"
+  }
+}

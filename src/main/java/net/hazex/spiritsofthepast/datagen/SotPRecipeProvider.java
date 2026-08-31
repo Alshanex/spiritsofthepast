@@ -43,9 +43,10 @@ public class SotPRecipeProvider extends RecipeProvider {
         shaped(RecipeCategory.COMBAT, SotPItemRegistry.SCARAB.get())
                 .pattern("GFG")
                 .pattern("GDG")
-                .pattern("EGE")
+                .pattern("ETE")
                 .define('F', SotPItemRegistry.FOSSIL.get())
                 .define('G', Items.GOLD_INGOT)
+                .define('T', Items.TOTEM_OF_UNDYING)
                 .define('D', Items.DIAMOND)
                 .define('E', Items.EMERALD)
                 .unlockedBy(getHasName(SotPItemRegistry.FOSSIL.get()), has(SotPItemRegistry.FOSSIL))
@@ -53,7 +54,7 @@ public class SotPRecipeProvider extends RecipeProvider {
                 .save(output);
 
         /*
-        *** weapons
+        *** Equipment
          */
 
         shaped(RecipeCategory.COMBAT, SotPItemRegistry.FOSSILIZED_JAVELIN.get())
@@ -73,6 +74,54 @@ public class SotPRecipeProvider extends RecipeProvider {
                 .define('F', SotPItemRegistry.FOSSIL.get())
                 .define('A', SotPItemRegistry.AMBER.get())
                 .define('D', Items.DIAMOND_SPEAR)
+                .unlockedBy(getHasName(SotPItemRegistry.FOSSIL.get()), has(SotPItemRegistry.FOSSIL))
+                .group("fossil")
+                .save(output);
+
+        shaped(RecipeCategory.COMBAT, SotPItemRegistry.AMBER_PICKAXE.get())
+                .pattern("FFF")
+                .pattern("ADA")
+                .pattern(" S ")
+                .define('F', SotPItemRegistry.FOSSIL.get())
+                .define('A', SotPItemRegistry.AMBER.get())
+                .define('D', Items.DIAMOND_PICKAXE)
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(SotPItemRegistry.FOSSIL.get()), has(SotPItemRegistry.FOSSIL))
+                .group("fossil")
+                .save(output);
+
+        shaped(RecipeCategory.COMBAT, SotPItemRegistry.AMBER_SICKLE.get())
+                .pattern(" FF")
+                .pattern("ADF")
+                .pattern("SA ")
+                .define('F', SotPItemRegistry.FOSSIL.get())
+                .define('A', SotPItemRegistry.AMBER.get())
+                .define('D', Items.DIAMOND_HOE)
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(SotPItemRegistry.FOSSIL.get()), has(SotPItemRegistry.FOSSIL))
+                .group("fossil")
+                .save(output);
+
+        shaped(RecipeCategory.COMBAT, SotPItemRegistry.AMBER_SHOVEL.get())
+                .pattern(" F ")
+                .pattern(" D ")
+                .pattern("ASA")
+                .define('F', SotPItemRegistry.FOSSIL.get())
+                .define('A', SotPItemRegistry.AMBER.get())
+                .define('D', Items.DIAMOND_SHOVEL)
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(SotPItemRegistry.FOSSIL.get()), has(SotPItemRegistry.FOSSIL))
+                .group("fossil")
+                .save(output);
+
+        shaped(RecipeCategory.COMBAT, SotPItemRegistry.AMBER_AXE.get())
+                .pattern("FF ")
+                .pattern("FDA")
+                .pattern("S  ")
+                .define('F', SotPItemRegistry.FOSSIL.get())
+                .define('A', SotPItemRegistry.AMBER.get())
+                .define('D', Items.DIAMOND_AXE)
+                .define('S', Items.STICK)
                 .unlockedBy(getHasName(SotPItemRegistry.FOSSIL.get()), has(SotPItemRegistry.FOSSIL))
                 .group("fossil")
                 .save(output);
