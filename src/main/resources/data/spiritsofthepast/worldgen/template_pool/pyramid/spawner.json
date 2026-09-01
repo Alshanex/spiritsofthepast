@@ -24,7 +24,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "spiritsofthepast:pyramid/spawner/husk",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "spiritsofthepast:pyramid/spawner/parched",

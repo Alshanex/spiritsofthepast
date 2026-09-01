@@ -86,7 +86,7 @@ public class SotPItemRegistry {
 
     public static final DeferredItem<Item> KHOPESH = ITEMS.registerItem("khopesh",
             properties -> new Item(properties.sword(SotPToolTiers.FOSSIL,
-                    6,
+                    5,
                     1.6f)
             ));
 
