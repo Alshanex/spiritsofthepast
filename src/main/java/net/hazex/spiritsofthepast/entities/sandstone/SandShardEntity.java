@@ -38,7 +38,7 @@ public class SandShardEntity extends Projectile {
     private static final double DRAG = 0.98;
     private static final float IMPACT_DAMAGE = 4.0F;
     private static final double SPLASH_RADIUS = 3.0;
-    private static final double COLLISION_HEADROOM = 3.0;
+    private static final double COLLISION_HEADROOM = 0.0;
     private static final int COLLISION_STEPS = 4;
 
     private static final boolean DEBUG_SPLASH = false;

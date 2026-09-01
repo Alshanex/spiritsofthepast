@@ -63,7 +63,7 @@ public class SandstormGoal extends Goal {
 
         this.pharaoh.startAction(PharaohEntity.ACTION_CASTING, -1);
         level.playSound(null, this.pharaoh.blockPosition(),
-                SotPSoundRegistry.PHARAOH_SANDSTORM.get(), SoundSource.HOSTILE, 2.5F, 1F);
+                SotPSoundRegistry.PHARAOH_SANDSTORM.get(), SoundSource.HOSTILE, 3.5F, 1F);
         level.playSound(null, this.pharaoh.blockPosition(),
                 SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.HOSTILE, 1.5F, 1.2F);
     }

@@ -20,7 +20,7 @@ public class SandfallEmitterEntity extends Entity {
 
     private static final int DURATION = 100;
     private static final double RADIUS = 15.0;
-    private static final double SPAWN_HEIGHT = 14.0;
+    private static final double SPAWN_HEIGHT = 6.0;
     private static final int SHARDS_PER_TICK = 1;
 
     private int ticksLeft = DURATION;

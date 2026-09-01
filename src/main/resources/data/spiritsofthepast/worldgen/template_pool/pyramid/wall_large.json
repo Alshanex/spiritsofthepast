@@ -18,6 +18,15 @@
         "processors": "spiritsofthepast:pyramid",
         "projection": "rigid"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "spiritsofthepast:pyramid/wall/false",
+        "processors": "spiritsofthepast:pyramid",
+        "projection": "rigid"
+      }
     }
   ]
 }

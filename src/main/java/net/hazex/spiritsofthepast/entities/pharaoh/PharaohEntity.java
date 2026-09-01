@@ -137,7 +137,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         this.abilityCooldowns[Ability.SWEEP.ordinal()] = 60;
         this.abilityCooldowns[Ability.SLAM.ordinal()] = 100;
         this.abilityCooldowns[Ability.DASH.ordinal()] = 80;
-        this.abilityCooldowns[Ability.FIREBALL.ordinal()] = 120;
+        this.abilityCooldowns[Ability.FIREBALL.ordinal()] = 80;
     }
 
     public boolean abilityReady(Ability ability) {
@@ -378,7 +378,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
         super.onAddedToLevel();
 
         if (!this.level().isClientSide()) {
-            this.playSound(SotPSoundRegistry.PHARAOH_SPAWN.get(), 3.0F, 1.0F);
+            this.playSound(SotPSoundRegistry.PHARAOH_SPAWN.get(), 3.5F, 1.0F);
         }
     }
 
@@ -434,9 +434,7 @@ public class PharaohEntity extends Monster implements GeoEntity {
             this.setHealth(0.0F);
             this.die(this.deathCause == null ? this.damageSources().generic() : this.deathCause);
             this.playSound(
-                    SotPSoundRegistry.DISTURBED_SANDS_END.get(), 1.0F, 1.0F);
-            this.playSound(
-                    SotPSoundRegistry.PHARAOH_DEATH.get(), 3.0F, 1.0F);
+                    SotPSoundRegistry.PHARAOH_DEATH.get(), 3.5F, 1.0F);
         }
 
         this.bossEvent.removeAllPlayers();

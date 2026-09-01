@@ -14,7 +14,7 @@ import java.util.EnumSet;
 
 public class FireballVolleyGoal extends Goal {
 
-    private static final int COOLDOWN = 160;
+    private static final int COOLDOWN = 80;
     private static final int FIRE_AT_TICK = 5;
     private static final double MIN_RANGE = 5.0;
     private static final double MAX_RANGE = 24.0;
@@ -84,7 +84,7 @@ public class FireballVolleyGoal extends Goal {
         }
 
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
-                SotPSoundRegistry.PHARAOH_FIREBALL.get(), SoundSource.HOSTILE, 1.5F, 0.7F);
+                SotPSoundRegistry.PHARAOH_FIREBALL.get(), SoundSource.HOSTILE, 3.5F, 1F);
         this.pharaoh.level().playSound(null, this.pharaoh.blockPosition(),
                 SoundEvents.BLAZE_SHOOT, SoundSource.HOSTILE, 2.5F, 1F);
     }

@@ -10,6 +10,7 @@ import net.minecraft.util.RandomSource;
 public class PharaohMusicSoundInstance extends AbstractTickableSoundInstance {
 
     private final PharaohEntity pharaoh;
+    private boolean musicEnd = false;
 
     public PharaohMusicSoundInstance(PharaohEntity pharaoh) {
         super(SotPSoundRegistry.DISTURBED_SANDS_LOOP.get(), SoundSource.MUSIC, RandomSource.create());
@@ -36,6 +37,17 @@ public class PharaohMusicSoundInstance extends AbstractTickableSoundInstance {
                 || this.pharaoh.isDying()
                 || this.pharaoh.level() != minecraft.level) {
             stop();
+        }
+        if (this.pharaoh.isDying()) {
+            if (!musicEnd) {
+                musicEnd = true;
+                this.pharaoh.level().playLocalSound(this.pharaoh.getX(), this.pharaoh.getY(), this.pharaoh.getZ(),
+                        SotPSoundRegistry.DISTURBED_SANDS_END.get(), SoundSource.MUSIC, 1.0F, 1.0F, false);
+            }
+
+            // Stop the looping music
+            stop();
+            return;
         }
 
         minecraft.getMusicManager().stopPlaying();

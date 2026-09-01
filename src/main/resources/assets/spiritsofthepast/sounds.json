@@ -81,10 +81,7 @@
   },
   "pharaoh_death": {
     "sounds": [
-      "spiritsofthepast:pharaoh_summon_1",
-      "spiritsofthepast:pharaoh_summon_2",
-      "spiritsofthepast:pharaoh_summon_3",
-      "spiritsofthepast:pharaoh_summon_4"
+      "spiritsofthepast:pharaoh_death_1"
     ]
   }
 }

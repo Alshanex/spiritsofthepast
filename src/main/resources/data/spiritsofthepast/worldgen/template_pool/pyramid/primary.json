@@ -5,15 +5,6 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "spiritsofthepast:pyramid/boss_room",
-        "processors": "spiritsofthepast:pyramid",
-        "projection": "rigid"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
-        "element_type": "minecraft:single_pool_element",
         "location": "spiritsofthepast:pyramid/corridor/long",
         "processors": "spiritsofthepast:pyramid",
         "projection": "rigid"
